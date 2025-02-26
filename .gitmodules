@@ -1,0 +1,3 @@
+[submodule "ERDot"]
+	path = ERDot
+	url = https://github.com/ehne/ERDot/tree/master
