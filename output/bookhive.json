@@ -1,0 +1,44 @@
+{
+  "tables": {
+    "User": {
+      "*username": "char()",
+      "email": "char()",
+      "password": "char()",
+      "+profileID": "int()"
+    },
+    "Profile": {
+      "*id": "int()",
+      "bio": "char()",
+      "profilePicture": "char()"
+    },
+    "Book": {
+      "*id": "int()",
+      "title": "char()",
+      "author": "char()",
+      "publisher": "char()",
+      "publishedDate": "date()"
+    },
+    "Review": {
+      "*id": "int()",
+      "+bookID": "int()",
+      "+userID": "int()",
+      "reviewText": "char()",
+      "rating": "int()"
+    },
+    "ReadingStatus": {
+      "*id": "int()",
+      "+bookID": "int()",
+      "+userID": "int()",
+      "status": "char()"
+    }
+  },
+  "relations": [
+    "User:profileID 1--1 Profile",
+    "Book: 1--* Review:bookID",
+    "Review:userID 1--1 User",
+    "ReadingStatus:bookID 1--1 Book",
+    "ReadingStatus:userID 1--1 User"
+  ],
+  "rankAdjustments": "",
+  "label": ""
+}

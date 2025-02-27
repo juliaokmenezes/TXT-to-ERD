@@ -1,0 +1,44 @@
+{
+  "tables": {
+    "User": {
+      "*username": "char()",
+      "email": "char()",
+      "password": "char()",
+      "+profileID": "int()"
+    },
+    "Profile": {
+      "*id": "int()",
+      "bio": "char()",
+      "location": "char()"
+    },
+    "Book": {
+      "*id": "int()",
+      "title": "char()",
+      "author": "char()",
+      "publisher": "char()",
+      "publishedDate": "date()"
+    },
+    "Review": {
+      "*id": "int()",
+      "+bookID": "int()",
+      "+userID": "int()",
+      "reviewText": "char()",
+      "rating": "int()"
+    },
+    "ReadingStatus": {
+      "*id": "int()",
+      "+bookID": "int()",
+      "+userID": "int()",
+      "status": "char()"
+    }
+  },
+  "relations": [
+    "User:profileID 1--1 Profile:id",
+    "Book: 1--* Review:bookID",
+    "User: 1--* Review:userID",
+    "User: 1--* ReadingStatus:userID",
+    "Book: 1--* ReadingStatus:bookID"
+  ],
+  "rankAdjustments": [],
+  "label": "Book Review Website Database Schema"
+}

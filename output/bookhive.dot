@@ -1,0 +1,106 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Book Review Website Database Schema",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "User" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>User</i></td></tr>
+        <tr><td port="username" align="left" cellpadding="5">PK username <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+        <tr><td port="password" align="left" cellpadding="5">password <font color="grey60">char()</font></td></tr>
+        <tr><td port="profileID" align="left" cellpadding="5">FK profileID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Profile" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Profile</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="bio" align="left" cellpadding="5">bio <font color="grey60">char()</font></td></tr>
+        <tr><td port="location" align="left" cellpadding="5">location <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Book" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Book</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="title" align="left" cellpadding="5">title <font color="grey60">char()</font></td></tr>
+        <tr><td port="author" align="left" cellpadding="5">author <font color="grey60">char()</font></td></tr>
+        <tr><td port="publisher" align="left" cellpadding="5">publisher <font color="grey60">char()</font></td></tr>
+        <tr><td port="publishedDate" align="left" cellpadding="5">publishedDate <font color="grey60">date()</font></td></tr>
+    </table>>];
+    "Review" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Review</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="bookID" align="left" cellpadding="5">FK bookID <font color="grey60">int()</font></td></tr>
+        <tr><td port="userID" align="left" cellpadding="5">FK userID <font color="grey60">int()</font></td></tr>
+        <tr><td port="reviewText" align="left" cellpadding="5">reviewText <font color="grey60">char()</font></td></tr>
+        <tr><td port="rating" align="left" cellpadding="5">rating <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "ReadingStatus" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>ReadingStatus</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="bookID" align="left" cellpadding="5">FK bookID <font color="grey60">int()</font></td></tr>
+        <tr><td port="userID" align="left" cellpadding="5">FK userID <font color="grey60">int()</font></td></tr>
+        <tr><td port="status" align="left" cellpadding="5">status <font color="grey60">char()</font></td></tr>
+    </table>>];
+
+    
+    "User":"profileID"->"Profile":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Book":""->"Review":"bookID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "User":""->"Review":"userID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "User":""->"ReadingStatus":"userID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Book":""->"ReadingStatus":"bookID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+
+
+    []
+
+}

@@ -1,8 +1,6 @@
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 import os
-import httpx
+
 
 
 def create_model(model: str):
