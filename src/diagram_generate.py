@@ -15,7 +15,6 @@ def generate_diagram(dot_file, output_format="png"):
         print(f"Error running Graphviz: {result.stderr}")
         return None
     
-    print(f"Generated diagram: {output_file}")
     return output_file
 
 

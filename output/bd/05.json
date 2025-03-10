@@ -1,0 +1,52 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Property": {
+      "*id": "int()",
+      "address": "char()",
+      "city": "char()",
+      "state": "char()",
+      "country": "char()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "RentPayment": {
+      "*id": "int()",
+      "paymentDate": "date()",
+      "paymentAmount": "float()",
+      "+agentID": "int()",
+      "+propertyID": "int()"
+    },
+    "Contract": {
+      "*id": "int()",
+      "startDate": "date()",
+      "endDate": "date()",
+      "clauses": "char()",
+      "+tenantID": "int()",
+      "+propertyID": "int()",
+      "+securityDepositRefunded": "bool()"
+    }
+  },
+  "relations": [
+    "Agent:id 1--* Property:agentID",
+    "PropertyOwner:id 1--* Property:ownerID",
+    "Tenant:id 1--1 Contract:tenantID",
+    "Contract:id 1--1 Property:propertyID",
+    "RentPayment:agentID *--1 Agent:id",
+    "RentPayment:propertyID *--1 Property:id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

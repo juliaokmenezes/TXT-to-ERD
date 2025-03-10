@@ -1,0 +1,54 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Property": {
+      "*id": "int()",
+      "address": "char()",
+      "city": "char()",
+      "state": "char()",
+      "country": "char()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Rental": {
+      "*id": "int()",
+      "+agentID": "int()",
+      "+tenantID": "int()",
+      "+propertyID": "int()",
+      "+propertyOwnerID": "int()",
+      "rentDate": "date()",
+      "rentAmount": "float()"
+    },
+    "RentPayment": {
+      "*id": "int()",
+      "+rentalID": "int()",
+      "+paymentAccount": "char()",
+      "+receivingAccount": "char()",
+      "paymentDate": "date()",
+      "paymentMonth": "int()"
+    }
+  },
+  "relations": [
+    "Agent:id 1--* Property:propertyID",
+    "PropertyOwner:id 1--* Property:propertyID",
+    "Tenant:id 1--1 Rental:tenantID",
+    "Rental:agentID 1--1 Agent:id",
+    "Rental:propertyID 1--1 Property:id",
+    "Rental:propertyOwnerID 1--1 PropertyOwner:id",
+    "Rental:rentalID 1--1 RentPayment:rentalID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

@@ -1,0 +1,68 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()",
+      "salary": "int()"
+    },
+    "Property": {
+      "*id": "int()",
+      "address": "char()",
+      "ownerID": "int()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Contract": {
+      "*id": "int()",
+      "startDate": "date()",
+      "endDate": "date()",
+      "clauses": "char()",
+      "securityDepositRefunded": "bool()",
+      "tenantID": "int()",
+      "propertyID": "int()"
+    },
+    "RentPayment": {
+      "*id": "int()",
+      "paymentDate": "date()",
+      "paymentAccount": "char()",
+      "receivingAccount": "char()",
+      "contractID": "int()"
+    },
+    "Guarantor": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Maintenance": {
+      "*id": "int()",
+      "date": "date()",
+      "propertyID": "int()"
+    },
+    "Referral": {
+      "*id": "int()",
+      "date": "date()",
+      "referringAgentID": "int()",
+      "commission": "int()"
+    }
+  },
+  "relations": [
+    "Agent: id 1--* Property: ownerID",
+    "Tenant: id 1--* Contract: tenantID",
+    "Property: id 1--* PropertyOwner: id",
+    "Contract: id 1--* RentPayment: contractID",
+    "Contract: id 1--* Guarantor: id",
+    "Property: id 1--* Maintenance: propertyID",
+    "Agent: id 1--* Referral: referringAgentID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

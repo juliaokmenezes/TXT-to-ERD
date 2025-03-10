@@ -1,0 +1,33 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Property": {
+      "*id": "int()",
+      "+agentID": "int()",
+      "+ownerID": "int()",
+      "address": "char()",
+      "price": "int()"
+    }
+  },
+  "relations": [
+    "Agent:id 1--1 Property:agentID",
+    "PropertyOwner:id 1--1 Property:ownerID",
+    "Tenant:id 1--1 Property:tenantID"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

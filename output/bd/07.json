@@ -1,0 +1,56 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()",
+      "salary": "int()"
+    },
+    "Property": {
+      "*id": "int()",
+      "address": "char()",
+      "ownerID": "int()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Contract": {
+      "*id": "int()",
+      "startDate": "date()",
+      "endDate": "date()",
+      "clauses": "char()",
+      "securityDepositRefunded": "bool()",
+      "guarantorID": "int()"
+    },
+    "RentPayment": {
+      "*id": "int()",
+      "contractID": "int()",
+      "paymentDate": "date()",
+      "paymentAccount": "char()",
+      "receivingAccount": "char()"
+    },
+    "Maintenance": {
+      "*id": "int()",
+      "propertyID": "int()",
+      "lastMaintenanceDate": "date()"
+    }
+  },
+  "relations": [
+    "Agent: id 1--* Property: ownerID",
+    "PropertyOwner: id 1--* Property: ownerID",
+    "Tenant: id 1--* Contract: tenantID",
+    "Contract: id 1--* Property: propertyID",
+    "Contract: id 1--* RentPayment: contractID",
+    "RentPayment: id 1--* Contract: contractID",
+    "Maintenance: id 1--* Property: propertyID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

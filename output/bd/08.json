@@ -1,0 +1,58 @@
+{
+  "tables": {
+    "Agent": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Tenant": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()",
+      "salary": "int()"
+    },
+    "Property": {
+      "*id": "int()",
+      "address": "char()",
+      "ownerID": "int()"
+    },
+    "PropertyOwner": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Guarantor": {
+      "*id": "int()",
+      "name": "char()",
+      "email": "char()"
+    },
+    "Contract": {
+      "*id": "int()",
+      "startDate": "date()",
+      "endDate": "date()",
+      "clauses": "char()",
+      "securityDepositRefunded": "bool()",
+      "propertyID": "int()",
+      "tenantID": "int()",
+      "+agentID": "int()",
+      "+guarantorID": "int()"
+    },
+    "RentPayment": {
+      "*id": "int()",
+      "paymentDate": "date()",
+      "paymentAccount": "char()",
+      "receivingAccount": "char()",
+      "contractID": "int()"
+    }
+  },
+  "relations": [
+    "Agent:agentID *--1 Contract:agentID",
+    "Tenant:tenantID *--1 Contract:tenantID",
+    "Property:ownerID 1--1 PropertyOwner:ownerID",
+    "Contract:propertyID 1--1 Property:id",
+    "Contract:guarantorID 1--* Guarantor:id",
+    "RentPayment:contractID 1--1 Contract:id"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

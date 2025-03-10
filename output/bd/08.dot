@@ -1,0 +1,125 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Real Estate Agency Database",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Agent" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Agent</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Tenant" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Tenant</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+        <tr><td port="salary" align="left" cellpadding="5">salary <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Property" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Property</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">char()</font></td></tr>
+        <tr><td port="ownerID" align="left" cellpadding="5">ownerID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "PropertyOwner" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>PropertyOwner</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Guarantor" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Guarantor</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Contract" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Contract</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="startDate" align="left" cellpadding="5">startDate <font color="grey60">date()</font></td></tr>
+        <tr><td port="endDate" align="left" cellpadding="5">endDate <font color="grey60">date()</font></td></tr>
+        <tr><td port="clauses" align="left" cellpadding="5">clauses <font color="grey60">char()</font></td></tr>
+        <tr><td port="securityDepositRefunded" align="left" cellpadding="5">securityDepositRefunded <font color="grey60">bool()</font></td></tr>
+        <tr><td port="propertyID" align="left" cellpadding="5">propertyID <font color="grey60">int()</font></td></tr>
+        <tr><td port="tenantID" align="left" cellpadding="5">tenantID <font color="grey60">int()</font></td></tr>
+        <tr><td port="agentID" align="left" cellpadding="5">FK agentID <font color="grey60">int()</font></td></tr>
+        <tr><td port="guarantorID" align="left" cellpadding="5">FK guarantorID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "RentPayment" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>RentPayment</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="paymentDate" align="left" cellpadding="5">paymentDate <font color="grey60">date()</font></td></tr>
+        <tr><td port="paymentAccount" align="left" cellpadding="5">paymentAccount <font color="grey60">char()</font></td></tr>
+        <tr><td port="receivingAccount" align="left" cellpadding="5">receivingAccount <font color="grey60">char()</font></td></tr>
+        <tr><td port="contractID" align="left" cellpadding="5">contractID <font color="grey60">int()</font></td></tr>
+    </table>>];
+
+    
+    "Agent":"agentID"->"Contract":"agentID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Tenant":"tenantID"->"Contract":"tenantID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Property":"ownerID"->"PropertyOwner":"ownerID" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Contract":"propertyID"->"Property":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Contract":"guarantorID"->"Guarantor":"id" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "RentPayment":"contractID"->"Contract":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+}
