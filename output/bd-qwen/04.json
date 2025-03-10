@@ -1,0 +1,53 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "type": "varchar(50)",
+      "price": "decimal(10,2)",
+      "+agentID": "int()",
+      "+ownerID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Rental": {
+      "*rentalID": "int() NOT NULL",
+      "+propertyID": "int()",
+      "+tenantID": "int()",
+      "startDate": "date() NOT NULL",
+      "endDate": "date()"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "+rentalID": "int()",
+      "paymentDate": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "month": "varchar(20) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agentID *--1 Agent:agentID",
+    "Property:ownerID *--1 Owner:ownerID",
+    "Rental:propertyID *--1 Property:propertyID",
+    "Rental:tenantID *--1 Tenant:tenantID",
+    "Payment:rentalID *--1 Rental:rentalID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database Schema"
+}

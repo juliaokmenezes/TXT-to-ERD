@@ -1,0 +1,67 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "lastMaintenanceDate": "date() NOT NULL",
+      "+ownerID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text",
+      "depositRefunded": "boolean",
+      "+propertyID": "int()",
+      "+tenantID": "int()"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "paymentMethod": "varchar(50) NOT NULL",
+      "month": "int() NOT NULL",
+      "+contractID": "int()"
+    },
+    "Guarantor": {
+      "*guarantorID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "ContractGuarantor": {
+      "*contractID": "int() NOT NULL",
+      "*guarantorID": "int() NOT NULL",
+      "percentageCovered": "decimal(5,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:ownerID 1--* Owner:ownerID",
+    "Contract:propertyID 1--1 Property:propertyID",
+    "Contract:tenantID 1--1 Tenant:tenantID",
+    "Payment:contractID 1--* Contract:contractID",
+    "ContractGuarantor:contractID 1--* Contract:contractID",
+    "ContractGuarantor:guarantorID 1--* Guarantor:guarantorID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database Schema"
+}

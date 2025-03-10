@@ -1,0 +1,45 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "type": "varchar(50)",
+      "price": "decimal(10,2) NOT NULL",
+      "+agentID": "int()",
+      "+ownerID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Rental": {
+      "*rentalID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date()",
+      "+tenantID": "int()",
+      "+propertyID": "int()"
+    }
+  },
+  "relations": [
+    "Property:agentID *--1 Agent:agentID",
+    "Property:ownerID *--1 Owner:ownerID",
+    "Rental:tenantID *--1 Tenant:tenantID",
+    "Rental:propertyID *--1 Property:propertyID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

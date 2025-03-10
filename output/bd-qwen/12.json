@@ -1,0 +1,76 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "street": "varchar(100)",
+      "number": "varchar(20)",
+      "neighborhood": "varchar(100)",
+      "city": "varchar(100)",
+      "state": "varchar(100)",
+      "zipCode": "varchar(20)",
+      "lastMaintenanceDate": "date()",
+      "+agentID": "int()",
+      "+ownerID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text",
+      "depositRefunded": "boolean",
+      "+propertyID": "int()",
+      "+tenantID": "int()"
+    },
+    "Guarantor": {
+      "*guarantorID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "percentageCovered": "decimal(5,2)"
+    },
+    "ContractGuarantor": {
+      "*contractID": "int()",
+      "*guarantorID": "int()",
+      "percentageCovered": "decimal(5,2)"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "paymentMethod": "varchar(50)",
+      "amount": "decimal(10,2) NOT NULL",
+      "month": "int() NOT NULL",
+      "year": "int() NOT NULL",
+      "+contractID": "int()"
+    }
+  },
+  "relations": [
+    "Property:agentID *--1 Agent:agentID",
+    "Property:ownerID *--1 Owner:ownerID",
+    "Contract:propertyID *--1 Property:propertyID",
+    "Contract:tenantID *--1 Tenant:tenantID",
+    "ContractGuarantor:contractID *--1 Contract:contractID",
+    "ContractGuarantor:guarantorID *--1 Guarantor:guarantorID",
+    "Payment:contractID *--1 Contract:contractID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database Schema"
+}

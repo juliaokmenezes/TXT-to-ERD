@@ -1,0 +1,70 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "type": "varchar(50)",
+      "ownerID": "int()",
+      "lastMaintenanceDate": "date()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "propertyID": "int()",
+      "tenantID": "int()",
+      "agentID": "int()",
+      "startDate": "date()",
+      "endDate": "date()",
+      "clauses": "text",
+      "depositRefunded": "boolean",
+      "guarantorName": "varchar(100)",
+      "guarantorEmail": "varchar(100)",
+      "guarantorPhone": "varchar(20)"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "contractID": "int()",
+      "paymentDate": "date()",
+      "amount": "decimal(10,2)",
+      "month": "varchar(20)",
+      "paymentAccount": "varchar(50)",
+      "receivingAccount": "varchar(50)"
+    },
+    "Referral": {
+      "*referralID": "int() NOT NULL",
+      "referringAgentID": "int()",
+      "referredAgentID": "int()",
+      "referralDate": "date()",
+      "commission": "decimal(10,2)"
+    }
+  },
+  "relations": [
+    "Property:ownerID 1--* Owner:ownerID",
+    "Contract:propertyID 1--1 Property:propertyID",
+    "Contract:tenantID 1--* Tenant:tenantID",
+    "Contract:agentID 1--* Agent:agentID",
+    "Payment:contractID 1--* Contract:contractID",
+    "Referral:referringAgentID 1--* Agent:agentID",
+    "Referral:referredAgentID 1--* Agent:agentID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database Schema"
+}

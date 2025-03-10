@@ -1,0 +1,75 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "ownerID": "int() NOT NULL",
+      "lastMaintenanceDate": "date()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "propertyID": "int() NOT NULL",
+      "tenantID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text",
+      "depositRefunded": "boolean",
+      "guarantorName": "varchar(100)",
+      "guarantorEmail": "varchar(100)",
+      "guarantorPhone": "varchar(20)"
+    },
+    "RentPayment": {
+      "*paymentID": "int() NOT NULL",
+      "contractID": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "month": "varchar(20) NOT NULL",
+      "payerAccount": "varchar(50) NOT NULL",
+      "receiverAccount": "varchar(50) NOT NULL"
+    },
+    "Referral": {
+      "*referralID": "int() NOT NULL",
+      "referringAgentID": "int() NOT NULL",
+      "referredAgentID": "int() NOT NULL",
+      "referralDate": "date() NOT NULL",
+      "commission": "decimal(10,2) NOT NULL"
+    },
+    "Fine": {
+      "*fineID": "int() NOT NULL",
+      "contractID": "int() NOT NULL",
+      "reason": "text NOT NULL",
+      "evidence": "text NOT NULL",
+      "firstOffense": "boolean NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:ownerID 1--* Owner:ownerID",
+    "Contract:propertyID 1--* Property:propertyID",
+    "Contract:tenantID 1--* Tenant:tenantID",
+    "RentPayment:contractID 1--* Contract:contractID",
+    "Referral:referringAgentID 1--* Agent:agentID",
+    "Referral:referredAgentID 1--* Agent:agentID",
+    "Fine:contractID 1--* Contract:contractID"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database Schema"
+}

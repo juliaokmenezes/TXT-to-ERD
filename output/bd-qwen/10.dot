@@ -1,0 +1,150 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Real Estate Agency Database Schema",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Agent" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Agent</i></td></tr>
+        <tr><td port="agentID" align="left" cellpadding="5">PK agentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+    </table>>];
+    "Property" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Property</i></td></tr>
+        <tr><td port="propertyID" align="left" cellpadding="5">PK propertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">varchar(255) NOT NULL</font></td></tr>
+        <tr><td port="ownerID" align="left" cellpadding="5">ownerID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="lastMaintenanceDate" align="left" cellpadding="5">lastMaintenanceDate <font color="grey60">date()</font></td></tr>
+    </table>>];
+    "Owner" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Owner</i></td></tr>
+        <tr><td port="ownerID" align="left" cellpadding="5">PK ownerID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+    </table>>];
+    "Tenant" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Tenant</i></td></tr>
+        <tr><td port="tenantID" align="left" cellpadding="5">PK tenantID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="salary" align="left" cellpadding="5">salary <font color="grey60">decimal(10,2)</font></td></tr>
+    </table>>];
+    "Contract" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Contract</i></td></tr>
+        <tr><td port="contractID" align="left" cellpadding="5">PK contractID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="propertyID" align="left" cellpadding="5">propertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="tenantID" align="left" cellpadding="5">tenantID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="startDate" align="left" cellpadding="5">startDate <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="endDate" align="left" cellpadding="5">endDate <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="clauses" align="left" cellpadding="5">clauses <font color="grey60">text</font></td></tr>
+        <tr><td port="depositRefunded" align="left" cellpadding="5">depositRefunded <font color="grey60">boolean</font></td></tr>
+        <tr><td port="guarantorName" align="left" cellpadding="5">guarantorName <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="guarantorEmail" align="left" cellpadding="5">guarantorEmail <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="guarantorPhone" align="left" cellpadding="5">guarantorPhone <font color="grey60">varchar(20)</font></td></tr>
+    </table>>];
+    "RentPayment" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>RentPayment</i></td></tr>
+        <tr><td port="paymentID" align="left" cellpadding="5">PK paymentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="contractID" align="left" cellpadding="5">contractID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="paymentDate" align="left" cellpadding="5">paymentDate <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="amount" align="left" cellpadding="5">amount <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="month" align="left" cellpadding="5">month <font color="grey60">varchar(20) NOT NULL</font></td></tr>
+        <tr><td port="payerAccount" align="left" cellpadding="5">payerAccount <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+        <tr><td port="receiverAccount" align="left" cellpadding="5">receiverAccount <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Referral" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Referral</i></td></tr>
+        <tr><td port="referralID" align="left" cellpadding="5">PK referralID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="referringAgentID" align="left" cellpadding="5">referringAgentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="referredAgentID" align="left" cellpadding="5">referredAgentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="referralDate" align="left" cellpadding="5">referralDate <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="commission" align="left" cellpadding="5">commission <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+    </table>>];
+    "Fine" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Fine</i></td></tr>
+        <tr><td port="fineID" align="left" cellpadding="5">PK fineID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="contractID" align="left" cellpadding="5">contractID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="reason" align="left" cellpadding="5">reason <font color="grey60">text NOT NULL</font></td></tr>
+        <tr><td port="evidence" align="left" cellpadding="5">evidence <font color="grey60">text NOT NULL</font></td></tr>
+        <tr><td port="firstOffense" align="left" cellpadding="5">firstOffense <font color="grey60">boolean NOT NULL</font></td></tr>
+    </table>>];
+
+    
+    "Property":"ownerID"->"Owner":"ownerID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Contract":"propertyID"->"Property":"propertyID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Contract":"tenantID"->"Tenant":"tenantID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "RentPayment":"contractID"->"Contract":"contractID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Referral":"referringAgentID"->"Agent":"agentID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Referral":"referredAgentID"->"Agent":"agentID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Fine":"contractID"->"Contract":"contractID" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+}

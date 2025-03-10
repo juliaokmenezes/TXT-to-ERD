@@ -1,0 +1,81 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Real Estate Management System",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Agent" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Agent</i></td></tr>
+        <tr><td port="agentID" align="left" cellpadding="5">PK agentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+    </table>>];
+    "Property" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Property</i></td></tr>
+        <tr><td port="propertyID" align="left" cellpadding="5">PK propertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">varchar(255) NOT NULL</font></td></tr>
+        <tr><td port="type" align="left" cellpadding="5">type <font color="grey60">varchar(50)</font></td></tr>
+        <tr><td port="rent" align="left" cellpadding="5">rent <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="agentID" align="left" cellpadding="5">FK agentID <font color="grey60">int()</font></td></tr>
+        <tr><td port="ownerID" align="left" cellpadding="5">FK ownerID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Owner" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Owner</i></td></tr>
+        <tr><td port="ownerID" align="left" cellpadding="5">PK ownerID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+    </table>>];
+    "Tenant" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Tenant</i></td></tr>
+        <tr><td port="tenantID" align="left" cellpadding="5">PK tenantID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="propertyID" align="left" cellpadding="5">FK propertyID <font color="grey60">int()</font></td></tr>
+    </table>>];
+
+    
+    "Property":"agentID"->"Agent":"agentID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Property":"ownerID"->"Owner":"ownerID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Tenant":"propertyID"->"Property":"propertyID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+}
