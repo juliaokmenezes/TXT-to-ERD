@@ -1,0 +1,87 @@
+{
+  "tables": {
+    "Agent": {
+      "*id_agent": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "+id_property": "int()"
+    },
+    "Tenant": {
+      "*id_tenant": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "+id_property": "int()"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": "varchar(100) NOT NULL",
+      "owner_id": "int() NOT NULL",
+      "+id_agent": "int()"
+    },
+    "PropertyOwner": {
+      "*id_owner": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "RentPayment": {
+      "*id_rentpayment": "int() NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL",
+      "+id_contract": "int()"
+    },
+    "Contract": {
+      "*id_contract": "int() NOT NULL",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "varchar(100) NOT NULL",
+      "+id_tenant": "int()",
+      "+id_property": "int()",
+      "+id_agent": "int()"
+    },
+    "Guarantor": {
+      "*id_guarantor": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Maintenance": {
+      "*id_maintenance": "int() NOT NULL",
+      "date": "date() NOT NULL",
+      "+id_property": "int()"
+    },
+    "Fine": {
+      "*id_fine": "int() NOT NULL",
+      "reason": "varchar(100) NOT NULL",
+      "evidence": "varchar(100) NOT NULL",
+      "+id_contract": "int()"
+    },
+    "Broker": {
+      "*id_broker": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Referral": {
+      "*id_referral": "int() NOT NULL",
+      "date": "date() NOT NULL",
+      "+id_broker": "int()",
+      "+id_client": "int()"
+    }
+  },
+  "relations": [
+    "Agent:id_agent *--1 Property:id_agent",
+    "Tenant:id_tenant *--1 Property:id_tenant",
+    "Property:id_owner 1--1 PropertyOwner:id_owner",
+    "Property:id_agent 1--1 Agent:id_agent",
+    "RentPayment:id_rentpayment 1--1 Contract:id_contract",
+    "Contract:id_tenant 1--1 Tenant:id_tenant",
+    "Contract:id_property 1--1 Property:id_property",
+    "Contract:id_agent 1--1 Agent:id_agent",
+    "Guarantor:id_guarantor 1--1 Contract:id_contract",
+    "Maintenance:id_maintenance 1--1 Property:id_property",
+    "Fine:id_fine 1--1 Contract:id_contract",
+    "Broker:id_broker 1--1 Referral:id_broker",
+    "Referral:id_client 1--1 Broker:id_broker"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

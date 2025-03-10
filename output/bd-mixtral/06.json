@@ -1,0 +1,65 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL",
+      "+guarantorID": "int()",
+      "+currentRentalID": "int()"
+    },
+    "Guarantor": {
+      "*guarantorID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "price": "decimal(10,2) NOT NULL",
+      "+ownerID": "int() NOT NULL",
+      "+agentID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Rental": {
+      "*rentalID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text()",
+      "securityDepositRefunded": "boolean()",
+      "+tenantID": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "paymentAccount": "varchar(100) NOT NULL",
+      "receivingAccount": "varchar(100) NOT NULL",
+      "paymentAmount": "decimal(10,2) NOT NULL",
+      "+rentalID": "int() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agentID 1--* Property:agentID",
+    "Owner:ownerID 1--* Property:ownerID",
+    "Property:propertyID *--1 Rental:propertyID",
+    "Rental:rentalID *--1 Tenant:currentRentalID",
+    "Tenant:tenantID ?--1 Guarantor:guarantorID",
+    "Rental:rentalID *--1 Payment:rentalID"
+  ],
+  "rankAdjustments": "[]",
+  "label": "Real Estate Agency Database Schema"
+}

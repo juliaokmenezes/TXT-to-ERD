@@ -1,0 +1,69 @@
+{
+  "tables": {
+    "Agent": {
+      "*id_agent": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Tenant": {
+      "*id_tenant": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL",
+      "+current_property_id": "int()"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "price": "decimal(10,2) NOT NULL",
+      "last_maintenance_date": "date() NOT NULL",
+      "+owner_id": "int() NOT NULL",
+      "+agent_id": "int()"
+    },
+    "Owner": {
+      "*id_owner": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Payment": {
+      "*id_payment": "int() NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "+tenant_id": "int() NOT NULL",
+      "+property_id": "int() NOT NULL"
+    },
+    "Contract": {
+      "*id_contract": "int() NOT NULL",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL",
+      "+tenant_id": "int() NOT NULL",
+      "+property_id": "int() NOT NULL"
+    },
+    "Guarantor": {
+      "*id_guarantor": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "coverage_percentage": "decimal(5,2) NOT NULL",
+      "+contract_id": "int() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:id_agent 1--* Property:agent_id",
+    "Owner:id_owner 1--* Property:owner_id",
+    "Tenant:id_tenant *--1 Contract:tenant_id",
+    "Tenant:id_tenant *--1 Property:current_property_id",
+    "Property:id_property 1--* Payment:property_id",
+    "Tenant:id_tenant 1--* Payment:tenant_id",
+    "Contract:id_contract 1--* Payment:contract_id",
+    "Contract:id_contract *--* Guarantor:contract_id"
+  ],
+  "rankAdjustments": "[]",
+  "label": "Real Estate Agency Database Schema"
+}

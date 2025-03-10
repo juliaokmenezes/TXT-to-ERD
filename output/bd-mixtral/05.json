@@ -1,0 +1,59 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)",
+      "+currentPropertyID": "int()"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "price": "decimal(10,2) NOT NULL",
+      "+ownerID": "int()",
+      "+currentAgentID": "int()"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "paymentAccount": "varchar(100) NOT NULL",
+      "receivingAccount": "varchar(100) NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "+tenantID": "int()",
+      "+propertyID": "int()"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text()",
+      "depositRefunded": "boolean()",
+      "+tenantID": "int()",
+      "+propertyID": "int()"
+    }
+  },
+  "relations": [
+    "Agent:currentAgentID *--* Property:currentAgentID",
+    "Owner:ownerID *--* Property:ownerID",
+    "Tenant:currentPropertyID 1--1 Property:propertyID",
+    "Tenant:tenantID *--* Payment:tenantID",
+    "Property:propertyID *--* Payment:propertyID",
+    "Tenant:tenantID *--1 Contract:tenantID",
+    "Property:propertyID *--1 Contract:propertyID"
+  ],
+  "rankAdjustments": "[]",
+  "label": "Real Estate Agency Database Schema"
+}

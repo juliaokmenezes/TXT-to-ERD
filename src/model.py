@@ -1,9 +1,8 @@
 from langchain_groq import ChatGroq
 import os
 
-
-
-def create_model(model: str):
+model = "mixtral-8x7b-32768"
+def create_model():
     result = ChatGroq(
         model_name=model,
         groq_api_key=os.getenv("MODEL_API_KEY"),

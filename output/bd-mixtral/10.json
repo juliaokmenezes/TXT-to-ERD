@@ -1,0 +1,86 @@
+{
+  "tables": {
+    "Agent": {
+      "*id_agent": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Tenant": {
+      "*id_tenant": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL",
+      "+guarantorID": "int()",
+      "+lastRentedPropertyID": "int()"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "country": "varchar(100) NOT NULL",
+      "postalCode": "varchar(10) NOT NULL",
+      "*ownerID": "int() NOT NULL",
+      "+maintenanceDate": "date()",
+      "+lastRentedDate": "date()"
+    },
+    "Owner": {
+      "*id_owner": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL"
+    },
+    "Payment": {
+      "*id_payment": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "paymentAccount": "varchar(100) NOT NULL",
+      "receivingAccount": "varchar(100) NOT NULL",
+      "+tenantID": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL"
+    },
+    "Contract": {
+      "*id_contract": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "securityDepositRefunded": "boolean()",
+      "+propertyID": "int() NOT NULL",
+      "+tenantID": "int() NOT NULL"
+    },
+    "Referral": {
+      "*id_referral": "int() NOT NULL",
+      "referralDate": "date() NOT NULL",
+      "commission": "decimal(10,2) NOT NULL",
+      "+referrerID": "int() NOT NULL",
+      "+referredID": "int() NOT NULL"
+    },
+    "Fine": {
+      "*id_fine": "int() NOT NULL",
+      "reason": "text() NOT NULL",
+      "evidence": "text() NOT NULL",
+      "offenseCount": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL",
+      "+tenantID": "int() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:id_agent 1--* Property:ownerID",
+    "Owner:id_owner *--* Property:id_property",
+    "Tenant:id_tenant *--1 Contract:tenantID",
+    "Tenant:id_tenant *--1 Property:lastRentedPropertyID",
+    "Property:id_property *--1 Contract:propertyID",
+    "Tenant:id_tenant ?--1 Guarantor:id_guarantor",
+    "Payment:tenantID 1--1 Tenant:id_tenant",
+    "Payment:propertyID 1--1 Property:id_property",
+    "Contract:propertyID 1--1 Property:id_property",
+    "Contract:tenantID 1--1 Tenant:id_tenant",
+    "Referral:referrerID 1--* Agent:id_agent",
+    "Referral:referredID 1--* Agent:id_agent",
+    "Fine:propertyID 1--* Property:id_property",
+    "Fine:tenantID 1--* Tenant:id_tenant"
+  ],
+  "rankAdjustments": "[]",
+  "label": "Real Estate Agency Database Schema"
+}

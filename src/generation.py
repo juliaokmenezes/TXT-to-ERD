@@ -16,21 +16,21 @@ example_output = """
 {
     "tables": {
         "Person": {
-            "*name": "char()",
-            "height": "int()",
+            "*name": "varchar(100) NOT NULL",
+            "height": "decimal(10,2)NOT NULL",
             "weight": "int()",
-            "birthDate": "date()",
+            "birthDate": "date()NOT NULL",
             "+birthPlaceID": "int()"
         },
         "BirthPlace": {
-            "*id": "int()",
-            "birthCity": "char()",
-            "birthState": "char()",
-            "birthCountry": "char()"
+            "*id_birthplace": "int() NOT NULL",
+            "birthCity": "varchar(100)",
+            "birthState": "varchar(100)",
+            "birthCountry": "varchar(100) NOT NULL"
         }
     },
     "relations": [
-        "Person:birthPlaceID *--1 BirthPlace:id"
+        "Person:birthPlaceID *--1 BirthPlace:id_birthplace"
     ],
     "rankAdjustments": "",
     "label": ""
@@ -93,7 +93,8 @@ Your response **must** strictly follow this JSON structure:
 {example_output}
 
  ENSURE THAT: 
-    - All relations explicitly specify primary and foreign keys in the format Table:PrimaryKey X--X Table:ForeignKey. 
+    - All relations explicitly specify primary and foreign keys in the format Table:PrimaryKey X--X Table:ForeignKey. Even the spaces must be respected
+    - Obeserve that in a relation, Table:PrimaryKey there is no space between, you MUST obey this rule DO NOT make the relation like this: [Table: PrimaryKey]
     - rankAdjustments is always an empty list []. "
     - label contains a meaningful title."
     "Output ONLY the JSON without any additional text."
@@ -101,7 +102,8 @@ Your response **must** strictly follow this JSON structure:
 
 
 def call(input_requirements):
-    model = create_model("llama3-8b-8192")
+    model = create_model()
+    print(model)
 
     prompt = HumanMessage(f"Translate this requirements into json output: {input_requirements}")
     messages = [

@@ -1,0 +1,52 @@
+{
+  "tables": {
+    "Agent": {
+      "*id_agent": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Tenant": {
+      "*id_tenant": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": "varchar(100) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "country": "varchar(100) NOT NULL"
+    },
+    "PropertyOwner": {
+      "*id_property_owner": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Rental": {
+      "*id_rental": "int() NOT NULL",
+      "*tenantID": "int() NOT NULL",
+      "*propertyID": "int() NOT NULL",
+      "rentDate": "date() NOT NULL",
+      "rentAmount": "decimal(10,2) NOT NULL"
+    },
+    "RentPayment": {
+      "*id_rent_payment": "int() NOT NULL",
+      "*rentalID": "int() NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "paymentAmount": "decimal(10,2) NOT NULL",
+      "+tenantID": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent: id_agent 1--* Property: id_property",
+    "PropertyOwner: id_property_owner 1--* Property: id_property",
+    "Tenant: id_tenant 1--* Rental: tenantID",
+    "Rental: id_rental 1--1 Property: id_property",
+    "RentPayment: id_rent_payment 1--1 Rental: id_rental",
+    "RentPayment: tenantID +--1 Tenant: id_tenant",
+    "RentPayment: propertyID +--1 Property: id_property"
+  ],
+  "rankAdjustments": [],
+  "label": "Real Estate Agency Database"
+}

@@ -1,0 +1,68 @@
+{
+  "tables": {
+    "Agent": {
+      "*agentID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Tenant": {
+      "*tenantID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL",
+      "+currentPropertyID": "int()",
+      "+guarantorID": "int()"
+    },
+    "Property": {
+      "*propertyID": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "size": "int() NOT NULL",
+      "price": "decimal(10,2) NOT NULL",
+      "*ownerID": "int() NOT NULL",
+      "*agentID": "int() NOT NULL"
+    },
+    "Owner": {
+      "*ownerID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15)"
+    },
+    "Payment": {
+      "*paymentID": "int() NOT NULL",
+      "paymentAccount": "varchar(100) NOT NULL",
+      "receivingAccount": "varchar(100) NOT NULL",
+      "paymentDate": "date() NOT NULL",
+      "+tenantID": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL"
+    },
+    "Contract": {
+      "*contractID": "int() NOT NULL",
+      "startDate": "date() NOT NULL",
+      "endDate": "date() NOT NULL",
+      "clauses": "text()",
+      "securityDepositRefunded": "boolean()",
+      "+tenantID": "int() NOT NULL",
+      "+propertyID": "int() NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantorID": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(15) NOT NULL",
+      "percentage": "decimal(5,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agentID 1--* Property:agentID",
+    "Owner:ownerID 1--* Property:ownerID",
+    "Tenant:tenantID *--1 Contract:tenantID",
+    "Tenant:tenantID *--1 Payment:tenantID",
+    "Property:propertyID *--1 Contract:propertyID",
+    "Contract:contractID *--* Guarantor:guarantorID",
+    "Tenant:tenantID 1--1 Guarantor:guarantorID"
+  ],
+  "rankAdjustments": "[]",
+  "label": "Real Estate Agency Database"
+}
