@@ -77,5 +77,7 @@
         "Rents:id_rent 1--1 Agreement:id_rent",
         "Agreement:id_agreement 1--* AgreementGuarantors:id_agreement",
         "Guarantor:id_guarantor 1--* AgreementGuarantors:id_guarantor"
-    ]
+    ],
+    "rankAdjustments": [],
+    "label": ""
 }

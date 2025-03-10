@@ -86,5 +86,8 @@
         "Guarantor:id_guarantor 1--* AgreementGuarantors:id_guarantor",
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referred",
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referrer"
-    ]
+    ],
+
+"rankAdjustments": [],
+"label": ""
 }

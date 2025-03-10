@@ -96,5 +96,7 @@
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referred",
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referrer",
 		"Rents:id_rent 1--* Fines:id_rent"
-    ]
+    ],
+    "rankAdjustments": [],
+    "label": ""
 }
