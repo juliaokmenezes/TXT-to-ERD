@@ -1,0 +1,119 @@
+{
+    "tables": {
+        "Patients": {
+            "*id_patient": "int()",
+            "name": "char()",
+            "date_of_birth": "date()",
+            "gender": "char()",
+            "address": "char()",
+            "phone": "char()",
+            "email": "char()",
+            "medical_history": "text()"
+        },
+        "Doctors": {
+            "*id_doctor": "int()",
+            "name": "char()",
+            "crm": "char()",
+            "phone": "char()",
+            "email": "char()"
+        },
+        "Specialties": {
+            "*id_specialty": "int()",
+            "specialty_name": "char()"
+        },
+        "Doctor_Specialties": {
+            "+id_doctor": "int()",
+            "+id_specialty": "int()"
+        },
+        "Hospitals": {
+            "*id_hospital": "int()",
+            "name": "char()",
+            "address": "char()"
+        },
+        "Doctor_Hospitals": {
+            "+id_doctor": "int()",
+            "+id_hospital": "int()"
+        },
+        "Consultations": {
+            "*id_consultation": "int()",
+            "+id_patient": "int()",
+            "+id_doctor": "int()",
+            "date_time": "datetime()",
+            "reason": "text()",
+            "observations": "text()"
+        },
+        "Examinations": {
+            "*id_exam": "int()",
+            "+id_consultation": "int()",
+            "exam_type": "char()",
+            "result": "text()",
+            "exam_date": "date()"
+        },
+        "Diagnoses": {
+            "*id_diagnosis": "int()",
+            "+id_consultation": "int()",
+            "description": "text()",
+            "recommended_treatment": "text()"
+        },
+        "Medical_Records": {
+            "*id_record": "int()",
+            "+id_patient": "int()",
+            "+id_consultation": "int()"
+        },
+        "Medical_Students": {
+            "*id_student": "int()",
+            "name": "char()",
+            "email": "char()",
+            "year_of_study": "int()"
+        },
+        "Residents": {
+            "*id_resident": "int()",
+            "+id_student": "int()",
+            "+id_specialty": "int()",
+            "+id_hospital": "int()"
+        },
+        "Resident_Supervisors": {
+            "+id_resident": "int()",
+            "+id_doctor_supervisor": "int()"
+        },
+        "Resident_Consultations": {
+            "+id_resident": "int()",
+            "+id_consultation": "int()"
+        },
+        "Resident_Surgeries": {
+            "+id_resident": "int()",
+            "+id_surgery": "int()"
+        },
+        "Shifts": {
+            "*id_shift": "int()",
+            "+id_resident": "int()",
+            "+id_doctor_supervisor": "int()",
+            "start_time": "datetime()",
+            "end_time": "datetime()"
+        }
+    },
+    "relations": [
+        "Consultations:id_patient *--1 Patients:id_patient",
+        "Consultations:id_doctor *--1 Doctors:id_doctor",
+        "Doctor_Specialties:id_doctor *--1 Doctors:id_doctor",
+        "Doctor_Specialties:id_specialty *--1 Specialties:id_specialty",
+        "Doctor_Hospitals:id_doctor *--1 Doctors:id_doctor",
+        "Doctor_Hospitals:id_hospital *--1 Hospitals:id_hospital",
+        "Examinations:id_consultation *--1 Consultations:id_consultation",
+        "Diagnoses:id_consultation *--1 Consultations:id_consultation",
+        "Medical_Records:id_patient *--1 Patients:id_patient",
+        "Medical_Records:id_consultation *--1 Consultations:id_consultation",
+        "Residents:id_student *--1 Medical_Students:id_student",
+        "Residents:id_specialty *--1 Specialties:id_specialty",
+        "Residents:id_hospital *--1 Hospitals:id_hospital",
+        "Resident_Supervisors:id_resident *--1 Residents:id_resident",
+        "Resident_Supervisors:id_doctor_supervisor *--1 Doctors:id_doctor",
+        "Resident_Consultations:id_resident *--1 Residents:id_resident",
+        "Resident_Consultations:id_consultation *--1 Consultations:id_consultation",
+        "Resident_Surgeries:id_resident *--1 Residents:id_resident",
+        "Shifts:id_resident *--1 Residents:id_resident",
+        "Shifts:id_doctor_supervisor *--1 Doctors:id_doctor"
+    ],
+    "rankAdjustments": [],
+    "label": "Hospital University Database Schema"
+}

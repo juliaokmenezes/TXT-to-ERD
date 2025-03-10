@@ -1,0 +1,290 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Hospital University Database Schema",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Patients" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Patients</i></td></tr>
+        <tr><td port="id_patient" align="left" cellpadding="5">PK id_patient <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="date_of_birth" align="left" cellpadding="5">date_of_birth <font color="grey60">date()</font></td></tr>
+        <tr><td port="gender" align="left" cellpadding="5">gender <font color="grey60">char()</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">char()</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+        <tr><td port="medical_history" align="left" cellpadding="5">medical_history <font color="grey60">text()</font></td></tr>
+    </table>>];
+    "Doctors" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Doctors</i></td></tr>
+        <tr><td port="id_doctor" align="left" cellpadding="5">PK id_doctor <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="crm" align="left" cellpadding="5">crm <font color="grey60">char()</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Specialties" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Specialties</i></td></tr>
+        <tr><td port="id_specialty" align="left" cellpadding="5">PK id_specialty <font color="grey60">int()</font></td></tr>
+        <tr><td port="specialty_name" align="left" cellpadding="5">specialty_name <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Doctor_Specialties" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Doctor_Specialties</i></td></tr>
+        <tr><td port="id_doctor" align="left" cellpadding="5">FK id_doctor <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_specialty" align="left" cellpadding="5">FK id_specialty <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Hospitals" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Hospitals</i></td></tr>
+        <tr><td port="id_hospital" align="left" cellpadding="5">PK id_hospital <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Doctor_Hospitals" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Doctor_Hospitals</i></td></tr>
+        <tr><td port="id_doctor" align="left" cellpadding="5">FK id_doctor <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_hospital" align="left" cellpadding="5">FK id_hospital <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Consultations" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Consultations</i></td></tr>
+        <tr><td port="id_consultation" align="left" cellpadding="5">PK id_consultation <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_patient" align="left" cellpadding="5">FK id_patient <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_doctor" align="left" cellpadding="5">FK id_doctor <font color="grey60">int()</font></td></tr>
+        <tr><td port="date_time" align="left" cellpadding="5">date_time <font color="grey60">datetime()</font></td></tr>
+        <tr><td port="reason" align="left" cellpadding="5">reason <font color="grey60">text()</font></td></tr>
+        <tr><td port="observations" align="left" cellpadding="5">observations <font color="grey60">text()</font></td></tr>
+    </table>>];
+    "Examinations" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Examinations</i></td></tr>
+        <tr><td port="id_exam" align="left" cellpadding="5">PK id_exam <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_consultation" align="left" cellpadding="5">FK id_consultation <font color="grey60">int()</font></td></tr>
+        <tr><td port="exam_type" align="left" cellpadding="5">exam_type <font color="grey60">char()</font></td></tr>
+        <tr><td port="result" align="left" cellpadding="5">result <font color="grey60">text()</font></td></tr>
+        <tr><td port="exam_date" align="left" cellpadding="5">exam_date <font color="grey60">date()</font></td></tr>
+    </table>>];
+    "Diagnoses" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Diagnoses</i></td></tr>
+        <tr><td port="id_diagnosis" align="left" cellpadding="5">PK id_diagnosis <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_consultation" align="left" cellpadding="5">FK id_consultation <font color="grey60">int()</font></td></tr>
+        <tr><td port="description" align="left" cellpadding="5">description <font color="grey60">text()</font></td></tr>
+        <tr><td port="recommended_treatment" align="left" cellpadding="5">recommended_treatment <font color="grey60">text()</font></td></tr>
+    </table>>];
+    "Medical_Records" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Medical_Records</i></td></tr>
+        <tr><td port="id_record" align="left" cellpadding="5">PK id_record <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_patient" align="left" cellpadding="5">FK id_patient <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_consultation" align="left" cellpadding="5">FK id_consultation <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Medical_Students" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Medical_Students</i></td></tr>
+        <tr><td port="id_student" align="left" cellpadding="5">PK id_student <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">char()</font></td></tr>
+        <tr><td port="year_of_study" align="left" cellpadding="5">year_of_study <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Residents" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Residents</i></td></tr>
+        <tr><td port="id_resident" align="left" cellpadding="5">PK id_resident <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_student" align="left" cellpadding="5">FK id_student <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_specialty" align="left" cellpadding="5">FK id_specialty <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_hospital" align="left" cellpadding="5">FK id_hospital <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Resident_Supervisors" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Resident_Supervisors</i></td></tr>
+        <tr><td port="id_resident" align="left" cellpadding="5">FK id_resident <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_doctor_supervisor" align="left" cellpadding="5">FK id_doctor_supervisor <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Resident_Consultations" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Resident_Consultations</i></td></tr>
+        <tr><td port="id_resident" align="left" cellpadding="5">FK id_resident <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_consultation" align="left" cellpadding="5">FK id_consultation <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Resident_Surgeries" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Resident_Surgeries</i></td></tr>
+        <tr><td port="id_resident" align="left" cellpadding="5">FK id_resident <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_surgery" align="left" cellpadding="5">FK id_surgery <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Shifts" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Shifts</i></td></tr>
+        <tr><td port="id_shift" align="left" cellpadding="5">PK id_shift <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_resident" align="left" cellpadding="5">FK id_resident <font color="grey60">int()</font></td></tr>
+        <tr><td port="id_doctor_supervisor" align="left" cellpadding="5">FK id_doctor_supervisor <font color="grey60">int()</font></td></tr>
+        <tr><td port="start_time" align="left" cellpadding="5">start_time <font color="grey60">datetime()</font></td></tr>
+        <tr><td port="end_time" align="left" cellpadding="5">end_time <font color="grey60">datetime()</font></td></tr>
+    </table>>];
+
+    
+    "Consultations":"id_patient"->"Patients":"id_patient" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Consultations":"id_doctor"->"Doctors":"id_doctor" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Doctor_Specialties":"id_doctor"->"Doctors":"id_doctor" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Doctor_Specialties":"id_specialty"->"Specialties":"id_specialty" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Doctor_Hospitals":"id_doctor"->"Doctors":"id_doctor" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Doctor_Hospitals":"id_hospital"->"Hospitals":"id_hospital" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Examinations":"id_consultation"->"Consultations":"id_consultation" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Diagnoses":"id_consultation"->"Consultations":"id_consultation" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Medical_Records":"id_patient"->"Patients":"id_patient" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Medical_Records":"id_consultation"->"Consultations":"id_consultation" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Residents":"id_student"->"Medical_Students":"id_student" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Residents":"id_specialty"->"Specialties":"id_specialty" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Residents":"id_hospital"->"Hospitals":"id_hospital" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Resident_Supervisors":"id_resident"->"Residents":"id_resident" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Resident_Supervisors":"id_doctor_supervisor"->"Doctors":"id_doctor" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Resident_Consultations":"id_resident"->"Residents":"id_resident" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Resident_Consultations":"id_consultation"->"Consultations":"id_consultation" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Resident_Surgeries":"id_resident"->"Residents":"id_resident" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Shifts":"id_resident"->"Residents":"id_resident" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Shifts":"id_doctor_supervisor"->"Doctors":"id_doctor" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+
+}

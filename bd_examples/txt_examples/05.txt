@@ -1,0 +1,6 @@
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, tenants, properties, and property owners.
+
+- A real estate agent can manage more than one property, just as a property owner can own multiple properties.
+- A tenant may have rented more than one property over time, but they cannot have more than one active rental at the same time.
+- Rent payments must be made monthly, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- A contract must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not.

@@ -1,0 +1,50 @@
+{
+  "tables": {
+    "Patient": {
+      "*id": "int()",
+      "name": "char()",
+      "birthDate": "date()",
+      "+appointmentID": "int()"
+    },
+    "Appointment": {
+      "*id": "int()",
+      "date": "date()",
+      "doctorID": "int()",
+      "+testID": "int()",
+      "+diagnosisID": "int()"
+    },
+    "Doctor": {
+      "*id": "int()",
+      "name": "char()",
+      "+specialtyID": "int()"
+    },
+    "Specialty": {
+      "*id": "int()",
+      "name": "char()"
+    },
+    "Student": {
+      "*id": "int()",
+      "name": "char()",
+      "+residencyID": "int()"
+    },
+    "MedicalResidency": {
+      "*id": "int()",
+      "name": "char()"
+    },
+    "Hospital": {
+      "*id": "int()",
+      "name": "char()"
+    }
+  },
+  "relations": [
+    "Patient:appointmentID *--1 Appointment:id",
+    "Appointment:doctorID 1--1 Doctor:id",
+    "Appointment:testID *--1 Test:id",
+    "Appointment:diagnosisID *--1 Diagnosis:id",
+    "Doctor:specialtyID *--1 Specialty:id",
+    "Student:residencyID 1--1 MedicalResidency:id",
+    "Doctor:hospitalID 1--1 Hospital:id"
+  ],
+  "rankAdjustments": [],
+  "label": "Medical System Database Schema"
+}

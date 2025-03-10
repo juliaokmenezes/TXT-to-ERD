@@ -1,0 +1,123 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Medical System Database Schema",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Patient" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Patient</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="birthDate" align="left" cellpadding="5">birthDate <font color="grey60">date()</font></td></tr>
+        <tr><td port="appointmentID" align="left" cellpadding="5">FK appointmentID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Appointment" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Appointment</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="date" align="left" cellpadding="5">date <font color="grey60">date()</font></td></tr>
+        <tr><td port="doctorID" align="left" cellpadding="5">doctorID <font color="grey60">int()</font></td></tr>
+        <tr><td port="testID" align="left" cellpadding="5">FK testID <font color="grey60">int()</font></td></tr>
+        <tr><td port="diagnosisID" align="left" cellpadding="5">FK diagnosisID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Doctor" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Doctor</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="specialtyID" align="left" cellpadding="5">FK specialtyID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Specialty" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Specialty</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Student" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Student</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+        <tr><td port="residencyID" align="left" cellpadding="5">FK residencyID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "MedicalResidency" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>MedicalResidency</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+    </table>>];
+    "Hospital" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Hospital</i></td></tr>
+        <tr><td port="id" align="left" cellpadding="5">PK id <font color="grey60">int()</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">char()</font></td></tr>
+    </table>>];
+
+    
+    "Patient":"appointmentID"->"Appointment":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Appointment":"doctorID"->"Doctor":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Appointment":"testID"->"Test":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Appointment":"diagnosisID"->"Diagnosis":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Doctor":"specialtyID"->"Specialty":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Student":"residencyID"->"MedicalResidency":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Doctor":"hospitalID"->"Hospital":"id" [
+        arrowhead=noneotee,
+
+        arrowtail=noneotee,
+    ];
+}

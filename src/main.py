@@ -3,10 +3,27 @@ from erdor import run_erdot
 from diagram_generate import generate_diagram
 
 input_requirements=f"""
-Consider a website where you can share book reviews. As a user of this site, you can register on the platform, add books to your profile, write and share reviews, rate books, and track your reading progress through the reading status.
+Patients and appointments
+
+    Each patient can have multiple appointments with different doctors.
+    Each appointment can have several tests and diagnoses associated with it.
+    The patient's medical record needs to be updated with each new visit.
+
+Doctors and specialties
+
+    A doctor can have more than one specialty (e.g. Cardiology and General Practice).
+    Doctors can be teachers and supervisors of residents.
+    Doctors can work in different hospitals linked to the university.
+
+Students and Medical Residency
+
+    Students need to accompany doctors on consultations, surgeries and on call.
+    A resident can be under the supervision of several doctors, depending on their specialty:
+
+    * Each birthplace can have multiple people associated with it, but each person can only be linked to one birthplace.
+
+Translated with DeepL.com (free version)
 """
-
-
 
 
 
@@ -29,12 +46,8 @@ def pipeline(requirements, json_file="output.json", dot_file="output.dot"):
 
 
 
-if __name__ == "__main__":
-    input_requirements = """
-    Consider a website where you can share book reviews. As a user of this site, you can register on the platform, add books to your profile, write and share reviews, rate books, and track your reading progress through the reading status.
-    """
-    
-    dot_file = pipeline(input_requirements, "output/bookhive3.json", "output/bookhive3.dot")
+if __name__ == "__main__": 
+    dot_file = pipeline(input_requirements, "example_comparation/json/llama8b.json", "example_comparation/json/llama8b.dot")
     
     if dot_file:
         print(f"Pipeline completed successfully. Final output: {dot_file}")

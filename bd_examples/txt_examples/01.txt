@@ -1,0 +1,1 @@
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, tenants, properties, and property owners. Currently, the system only allows a real estate agent to manage a single property, a property owner to own only one property, and a tenant to rent only one property.

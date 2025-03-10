@@ -1,0 +1,36 @@
+{
+    "tables": {
+        "RealEstateAgent": {
+            "*id_realEstate": "int()",
+            "name": "varchar(100)",
+            "email": "varchar(50)",
+            "phoneNumber": "char(11)"
+        },
+        "Renter": {
+            "*id_renter": "int()",
+            "name": "varchar(100)",
+            "email": "varchar(50)",
+            "phoneNumber": "char(11)"
+        },
+        "Owner": {
+            "*id_owner": "int()",
+            "name": "varchar(100)",
+            "email": "varchar(50)",
+            "phoneNumber": "char(11)"
+        },
+        "Property": {
+            "*id_property": "int()",
+            "address": "varchar(200)",
+            "rentValue": "decimal(10,2)",
+            "+id_owner": "int()",
+            "+id_realEstate": "int()"
+        }
+    },
+
+    "relations": [
+        "Property:id_realEstate *--1 RealEstateAgent:id_realEstate",
+        "Property:id_owner *--1 Owner:id_owner"
+    ],
+    "rankAdjustments": "",
+    "label": ""
+}
