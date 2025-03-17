@@ -36,6 +36,54 @@ example_output = """
     "label": ""
 }
 """
+additional_example_input = """
+    Consider a site where it's possible to share book reviews. As a user of this site, you can register on the platform, add books to your profile, write and share reviews, rate books, and track your reading progress through the reading status.
+    """
+
+additional_example_output = """
+    {
+  {
+  "tables": {
+    "User": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "birth_date": "date()",
+      "password": "varchar(100) NOT NULL",
+      "profile_picture": "varchar(500)"
+    },
+    "Book": {
+      "*isbn": "varchar(100) NOT NULL",
+      "rating": "float() NOT NULL"
+    },
+    "Review": {
+      "*review_id": "bigserial() NOT NULL",
+      "+user_username": "varchar(100)",
+      "+book_isbn": "varchar(100)",
+      "start_date": "date()",
+      "end_date": "date()",
+      "rate": "integer()",
+      "content": "text() NOT NULL"
+    },
+    "UserBook": {
+      "*user_book_id": "bigserial() NOT NULL",
+      "+user_username": "varchar(100)",
+      "+book_isbn": "varchar(100)",
+      "+review_id": "bigint()",
+      "status": "varchar(30)"
+    }
+  },
+  "relations": [
+    "Review:user_username *--1 User:username",
+    "Review:book_isbn *--1 Book:isbn",
+    "UserBook:user_username *--1 User:username",
+    "UserBook:book_isbn *--1 Book:isbn",
+    "UserBook:review_id *--1 Review:review_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Book Review Platform"
+}
+"""
 
 json_fmt = """
 {
@@ -56,14 +104,14 @@ json_fmt = """
 
 
 system_message = f"""
-You are an expert data engineer responsible for designing and implementing relational databases. Your task is to analyze a given system description and generate a structured JSON output that defines the database schema. 
+You are a database expert specializing in designing and modeling Entity-Relationship (ER) diagrams. Your task is to analyze a given system description, extract its requirements, and generate a structured ER diagram in JSON format that defines the database model.
 
 ### Requirements:
 
 1. **Tables and Attributes**
    - Each table must have a **primary key (marked with `*`)**.
    - Foreign keys must be marked with `+` and reference another table.
-   - Attributes should have appropriate data types (`char()`, `int()`, `date()`, etc.).
+   - Attributes should have appropriate data types (`varchar(200)`, `int()`, `date()`, etc.).
 
 2. **Relationships**
    - Define entity relationships in the format:
@@ -97,7 +145,7 @@ Your response **must** strictly follow this JSON structure:
     - Obeserve that in a relation, Table:PrimaryKey there is no space between, you MUST obey this rule DO NOT make the relation like this: [Table: PrimaryKey]
     - rankAdjustments is always an empty list []. "
     - label contains a meaningful title."
-    "Output ONLY the JSON without any additional text."
+    "Output only the JSON—no additional text, explanations, or comments."
 """
 
 
@@ -105,10 +153,31 @@ def call(input_requirements):
     model = create_model()
     print(model)
 
-    prompt = HumanMessage(f"Translate this requirements into json output: {input_requirements}")
+    prompt = """
+    Here's an additional example to help understand different relationship types:
+
+    #### **Input:**
+    {additional_example_input}
+
+    #### **Expected Output:**
+    {additional_example_output}
+
+    Now, analyze the following database carefully, extract the requirements, identify tables, keys, and columns and relationships. then generate the ER diagram. Finally, translate it into the required JSON format. 
+
+    To solve this problem, follow these steps:
+    1. Identify the main entities from the description
+    2. Determine attributes for each entity
+    3. Establish primary keys for each entity
+    4. Identify relationships between entities 
+    5. Determine foreign keys based on relationships
+    6. Format everything according to the required JSON structure
+
+    Database description: {input_requirements}
+    """
+
     messages = [
       SystemMessage(system_message),
-      prompt
+      HumanMessage(prompt)
     ]
 
     answer_validate = model.invoke(messages).content
@@ -137,12 +206,7 @@ def extract_json(raw_answer: str):
 
     
 
-
-
-
-
-
-'''prompt_extract = HumanMessage(f"Read the description of the database, and extract requirements, tables, keys and columns. this is the description : {input_requirements}")
+'''prompt_extract = HumanMessage(f"Read the description of the database, understand, then and extract requirements, tables, keys and columns,then generate de ER diagram. this is the description : {input_requirements}")
     messages_extract = [
       prompt_extract
     ]
