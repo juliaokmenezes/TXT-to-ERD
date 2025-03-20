@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "country": "varchar(100) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "PropertyOwner": {
+      "*property_owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "+property_owner_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL",
+      "penalty_date": "date()",
+      "penalty_amount": "decimal(10,2) NOT NULL",
+      "utensils": "text() NOT NULL",
+      "bills": "varchar(100) NOT NULL"
+    },
+    "RentPayment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL",
+      "month": "varchar(20) NOT NULL"
+    }
+  },
+  "relations": [
+    "RentalAgreement:agent_id *--1 Agent:agent_id",
+    "RentalAgreement:property_id *--1 Property:property_id",
+    "RentalAgreement:renter_id *--1 Renter:renter_id",
+    "RentalAgreement:property_owner_id *--1 PropertyOwner:property_owner_id",
+    "RentPayment:agreement_id *--1 RentalAgreement:agreement_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

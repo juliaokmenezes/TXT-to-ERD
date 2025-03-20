@@ -1,0 +1,47 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100)",
+      "contact_info": "varchar(200)",
+      "commission_rate": "decimal(5,2)"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100)",
+      "contact_info": "varchar(200)",
+      "credit_score": "int()"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200)",
+      "price": "decimal(10,2)",
+      "type": "varchar(50)",
+      "size": "int()",
+      "+agent_id": "int()",
+      "+owner_id": "int()"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100)",
+      "contact_info": "varchar(200)",
+      "credit_score": "int()"
+    },
+    "RentalAgreement": {
+      "*rental_id": "int() NOT NULL",
+      "start_date": "date()",
+      "end_date": "date()",
+      "status": "varchar(50)",
+      "+renter_id": "int()",
+      "+property_id": "int()"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "PropertyOwner:owner_id 1--* Property:owner_id",
+    "Renter:renter_id *--* RentalAgreement:renter_id",
+    "Property:property_id *--* RentalAgreement:property_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

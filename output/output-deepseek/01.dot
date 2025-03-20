@@ -1,0 +1,113 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="Real Estate Agency Database",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Agent" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Agent</i></td></tr>
+        <tr><td port="AgentID" align="left" cellpadding="5">PK AgentID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="Name" align="left" cellpadding="5">Name <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="Phone" align="left" cellpadding="5">Phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="Email" align="left" cellpadding="5">Email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="LicenseNumber" align="left" cellpadding="5">LicenseNumber <font color="grey60">varchar(50)</font></td></tr>
+    </table>>];
+    "Property" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Property</i></td></tr>
+        <tr><td port="PropertyID" align="left" cellpadding="5">PK PropertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="Address" align="left" cellpadding="5">Address <font color="grey60">varchar(200)</font></td></tr>
+        <tr><td port="Price" align="left" cellpadding="5">Price <font color="grey60">decimal(10,2)</font></td></tr>
+        <tr><td port="Type" align="left" cellpadding="5">Type <font color="grey60">varchar(50)</font></td></tr>
+        <tr><td port="AgentID" align="left" cellpadding="5">FK AgentID <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "PropertyOwner" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>PropertyOwner</i></td></tr>
+        <tr><td port="OwnerID" align="left" cellpadding="5">PK OwnerID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="Name" align="left" cellpadding="5">Name <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="Phone" align="left" cellpadding="5">Phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="Email" align="left" cellpadding="5">Email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="DateOfBirth" align="left" cellpadding="5">DateOfBirth <font color="grey60">date()</font></td></tr>
+    </table>>];
+    "PropertyOwnerProperty" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>PropertyOwnerProperty</i></td></tr>
+        <tr><td port="PropertyID" align="left" cellpadding="5">PK PropertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="OwnerID" align="left" cellpadding="5">PK OwnerID <font color="grey60">int() NOT NULL</font></td></tr>
+    </table>>];
+    "Renter" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Renter</i></td></tr>
+        <tr><td port="RenterID" align="left" cellpadding="5">PK RenterID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="Name" align="left" cellpadding="5">Name <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="Phone" align="left" cellpadding="5">Phone <font color="grey60">varchar(20)</font></td></tr>
+        <tr><td port="Email" align="left" cellpadding="5">Email <font color="grey60">varchar(100)</font></td></tr>
+        <tr><td port="DateOfBirth" align="left" cellpadding="5">DateOfBirth <font color="grey60">date()</font></td></tr>
+    </table>>];
+    "PropertyRenter" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>PropertyRenter</i></td></tr>
+        <tr><td port="PropertyID" align="left" cellpadding="5">PK PropertyID <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="RenterID" align="left" cellpadding="5">PK RenterID <font color="grey60">int() NOT NULL</font></td></tr>
+    </table>>];
+
+    
+    "Agent":"AgentID"->"Property":"AgentID" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Property":"PropertyID"->"PropertyOwnerProperty":"PropertyID" [
+        arrowhead=ocrow,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "PropertyOwner":"OwnerID"->"PropertyOwnerProperty":"OwnerID" [
+        arrowhead=ocrow,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Property":"PropertyID"->"PropertyRenter":"PropertyID" [
+        arrowhead=ocrow,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Renter":"RenterID"->"PropertyRenter":"RenterID" [
+        arrowhead=ocrow,
+
+        arrowtail=ocrow,
+    ];
+
+
+
+    
+
+}

@@ -1,9 +1,0 @@
-A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renters, properties, and property owners.
-
-- A real estate agent can manage more than one property, just as a property owner can own multiple properties.
-- A renter may have rented more than one property over time, but they cannot have more than one active rental at the same time.
-- Rent payments must be made monthly, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
-- A contract must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not.
-- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly.
-- Before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, this must be flagged in the contract.
-- At the end of the contract, it is necessary to record whether the property has been damaged by the last tenant, and whether the owner has repaired it. 

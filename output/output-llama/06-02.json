@@ -1,0 +1,62 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200)",
+      "city": "varchar(100)",
+      "state": "varchar(100)",
+      "country": "varchar(100)"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)"
+    },
+    "Rent": {
+      "*rent_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "payment_date": "date()",
+      "payment_account": "varchar(100)",
+      "receiving_account": "varchar(100)"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "+guarantor_id": "int()",
+      "start_date": "date()",
+      "end_date": "date()",
+      "clauses": "text()",
+      "security_deposit_refunded": "boolean()"
+    }
+  },
+  "relations": [
+    "Agent:agent_id *--1 Property:property_id",
+    "PropertyOwner:owner_id *--1 Property:property_id",
+    "Renter:renter_id *--1 Rent:renter_id",
+    "Rent:agent_id *--1 Agent:agent_id",
+    "Rent:property_id *--1 Property:property_id",
+    "Contract:agent_id *--1 Agent:agent_id",
+    "Contract:property_id *--1 Property:property_id",
+    "Contract:renter_id *--1 Renter:renter_id",
+    "Contract:guarantor_id *--1 Agent:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

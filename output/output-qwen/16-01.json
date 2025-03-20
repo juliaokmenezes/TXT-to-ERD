@@ -1,0 +1,78 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address_street": "varchar(200) NOT NULL",
+      "address_number": "varchar(20)",
+      "address_neighborhood": "varchar(100)",
+      "address_city": "varchar(100)",
+      "address_state": "varchar(100)",
+      "address_zip_code": "varchar(20)",
+      "last_maintenance_date": "date()",
+      "parking_space": "boolean",
+      "+agent_id": "int()",
+      "+owner_id": "int()"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "deposit_refunded": "boolean",
+      "+renter_id": "int()",
+      "+property_id": "int()"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "percentage_covered": "decimal(5,2)"
+    },
+    "ContractGuarantor": {
+      "*contract_guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "+guarantor_id": "int()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL",
+      "month": "varchar(20) NOT NULL",
+      "+contract_id": "int()"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "Contract:renter_id 1--1 Renter:renter_id",
+    "Contract:property_id 1--1 Property:property_id",
+    "ContractGuarantor:contract_id *--1 Contract:contract_id",
+    "ContractGuarantor:guarantor_id *--1 Guarantor:guarantor_id",
+    "Payment:contract_id *--1 Contract:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

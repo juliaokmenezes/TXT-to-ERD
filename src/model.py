@@ -1,7 +1,7 @@
 from langchain_groq import ChatGroq
 import os
 
-model = "qwen-2.5-32b"
+model = "deepseek-r1-distill-qwen-32b"
 def create_model():
     result = ChatGroq(
         model_name=model,

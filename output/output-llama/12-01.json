@@ -1,0 +1,67 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": {
+        "street": "varchar(100) NOT NULL",
+        "number": "varchar(10) NOT NULL",
+        "neighborhood": "varchar(100) NOT NULL",
+        "city": "varchar(100) NOT NULL",
+        "state": "varchar(100) NOT NULL",
+        "zip_code": "varchar(10) NOT NULL"
+      },
+      "+owner_id": "int()"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "percentage": "decimal(10,2) NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_method": "varchar(20) NOT NULL"
+    }
+  },
+  "relations": [
+    "Contract:property_id *--1 Property:property_id",
+    "Contract:renter_id *--1 Renter:renter_id",
+    "Property:owner_id *--1 PropertyOwner:owner_id",
+    "Contract:guarantor_id *--1 Guarantor:guarantor_id",
+    "Payment:contract_id *--1 Contract:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

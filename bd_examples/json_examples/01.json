@@ -1,37 +1,39 @@
 {
     "tables": {
         "RealEstateAgent": {
-            "*id_realEstate": "int()",
-            "name": "varchar(100)",
-            "email": "varchar(50)",
-            "phoneNumber": "char(11)"
-        },
-        "Renter": {
-            "*id_renter": "int()",
-            "name": "varchar(100)",
-            "email": "varchar(50)",
-            "phoneNumber": "char(11)"
+            "*id_realEstate": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
         },
         "Owner": {
-            "*id_owner": "int()",
-            "name": "varchar(100)",
-            "email": "varchar(50)",
-            "phoneNumber": "char(11)"
+            "*id_owner": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Renter": {
+            "*id_renter": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
         },
         "Property": {
-            "*id_property": "int()",
-            "address": "varchar(200)",
-            "rentValue": "decimal()",
-            "+id_owner": "int()",
-            "+id_renter": "int()",
-            "+id_realEstate": "int()"
+            "*id_property": "int() NOT NULL",
+            "address": "varchar(200) NOT NULL",
+            "rentValue": "decimal(10,2) NOT NULL",
+            "+id_owner": "int() NOT NULL",
+            "+id_renter": "int() NOT NULL",
+            "+id_realEstate": "int() NOT NULL"
         }
     },
+
     "relations": [
-        "Property:id_realEstate 1--1 RealEstateAgent:id_realEstate",
+        "Property:id_realEstate *--1 RealEstateAgent:id_realEstate",
+        "Property:id_owner 1--1 Owner:id_owner",
         "Property:id_renter 1--1 Renter:id_renter",
-        "Property:id_owner 1--1 Owner:id_owner"
+        "Renter:id_renter 1--1 Property:id_owner"
     ],
     "rankAdjustments": "",
-    "label": ""
+    "label": "01"
 }

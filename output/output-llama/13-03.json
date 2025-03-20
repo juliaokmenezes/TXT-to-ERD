@@ -1,0 +1,54 @@
+{
+  "tables": {
+    "Agent": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "password": "varchar(100) NOT NULL",
+      "role": "varchar(20)"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "last_maintenance_date": "date()",
+      "+owner_id": "int()"
+    },
+    "Renter": {
+      "*id_renter": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "salary": "float() NOT NULL"
+    },
+    "Contract": {
+      "*id_contract": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL"
+    },
+    "Payment": {
+      "*id_payment": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_method": "varchar(20) NOT NULL"
+    },
+    "Guarantor": {
+      "*id_guarantor": "int() NOT NULL",
+      "+contract_id": "int()",
+      "percentage": "float() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:username *--1 User:username",
+    "Property:owner_id *--1 Agent:username",
+    "Renter:id_renter *--1 Contract:renter_id",
+    "Contract:property_id *--1 Property:id_property",
+    "Contract:id_contract *--1 Payment:contract_id",
+    "Payment:id_payment *--1 Contract:id_contract",
+    "Guarantor:contract_id *--1 Contract:id_contract"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

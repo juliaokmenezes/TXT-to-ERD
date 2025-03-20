@@ -1,0 +1,71 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": {
+        "street": "varchar(100) NOT NULL",
+        "number": "varchar(10) NOT NULL",
+        "neighborhood": "varchar(100) NOT NULL",
+        "city": "varchar(100) NOT NULL",
+        "state": "varchar(2) NOT NULL",
+        "zip_code": "varchar(10) NOT NULL"
+      },
+      "owner_id": "int()"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "contract_id": "int() NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "payment_method": "varchar(20) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "RentalInsurance": {
+      "*insurance_id": "int() NOT NULL",
+      "renter_id": "int() NOT NULL",
+      "policy_details": "text() NOT NULL",
+      "coverage_amount": "decimal(10,2) NOT NULL",
+      "insurance_provider": "varchar(100) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id *--1 Property:owner_id",
+    "Renter:renter_id *--1 Contract:renter_id",
+    "Property:property_id *--1 PropertyOwner:owner_id",
+    "Contract:contract_id *--1 Payment:contract_id",
+    "Contract:contract_id *--1 Guarantor:guarantor_id",
+    "Renter:renter_id *--1 RentalInsurance:renter_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

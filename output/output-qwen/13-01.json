@@ -1,0 +1,80 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "login": "varchar(100) NOT NULL",
+      "password": "varchar(100) NOT NULL"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "street": "varchar(100) NOT NULL",
+      "number": "varchar(20) NOT NULL",
+      "neighborhood": "varchar(100) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "zip_code": "varchar(20) NOT NULL",
+      "last_maintenance_date": "date()"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "security_deposit_refunded": "boolean()",
+      "contract_value": "decimal(10,2) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "percentage_covered": "decimal(5,2) NOT NULL"
+    },
+    "ContractGuarantor": {
+      "*contract_guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "+guarantor_id": "int()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "month_paid_for": "varchar(20) NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "Contract:renter_id *--1 Renter:renter_id",
+    "Contract:property_id *--1 Property:property_id",
+    "ContractGuarantor:contract_id *--1 Contract:contract_id",
+    "ContractGuarantor:guarantor_id *--1 Guarantor:guarantor_id",
+    "Payment:contract_id *--1 Contract:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

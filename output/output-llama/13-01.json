@@ -1,0 +1,65 @@
+{
+  "tables": {
+    "Agent": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "password": "varchar(100) NOT NULL",
+      "profile_picture": "varchar(500)"
+    },
+    "Renter": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "salary": "decimal(10,2) NOT NULL"
+    },
+    "Property": {
+      "*id_property": "int() NOT NULL",
+      "address": {
+        "street": "varchar(100)",
+        "number": "varchar(100)",
+        "neighborhood": "varchar(100)",
+        "city": "varchar(100)",
+        "state": "varchar(100)",
+        "zip_code": "varchar(100)"
+      },
+      "+owner_username": "varchar(100)"
+    },
+    "PropertyOwner": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)"
+    },
+    "Contract": {
+      "*id_contract": "int() NOT NULL",
+      "+agent_username": "varchar(100)",
+      "+renter_username": "varchar(100)",
+      "+property_id_property": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL"
+    },
+    "Guarantor": {
+      "*username": "varchar(100) NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)"
+    },
+    "Payment": {
+      "*id_payment": "int() NOT NULL",
+      "+contract_id_contract": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_method": "varchar(100) NOT NULL"
+    }
+  },
+  "relations": [
+    "Contract:agent_username *--1 Agent:username",
+    "Contract:renter_username *--1 Renter:username",
+    "Contract:property_id_property *--1 Property:id_property",
+    "Property:owner_username *--1 PropertyOwner:username",
+    "Contract:guarantor_username *--1 Guarantor:username",
+    "Payment:contract_id_contract *--1 Contract:id_contract"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

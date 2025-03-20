@@ -31,28 +31,16 @@
             "+id_renter": "int() NOT NULL",
             "rentInitialDate": "date() NOT NULL",
             "rentFinalDate": "date()",
-            "activeContract": "boolean NOT NULL",
-            "monthlyRent": "decimal(10,2) NOT NULL",
             "depositAmount": "decimal(10,2) NOT NULL"
-        },
-        "Payments": {
-            "*id_payment": "int() NOT NULL",
-            "+id_rent": "int() NOT NULL",
-            "monthReference": "int() NOT NULL",
-            "yearReference": "int() NOT NULL",
-            "amountPaid": "decimal(10,2) NOT NULL",
-            "paymentAccount": "varchar(50) NOT NULL",
-            "receivingAccount": "varchar(50) NOT NULL",
-            "paymentDate": "date() NOT NULL"
         }
     },
+
     "relations": [
-        "Owner:id_owner 1--* Property:id_owner",
-        "RealEstateAgent:id_realEstate 1--* Property:id_realEstate",
+        "Property:id_realEstate *--1 RealEstateAgent:id_realEstate",
+        "Property:id_owner *--1 Owner:id_owner",
         "Property:id_property 1--* Rents:id_property",
-        "Renter:id_renter 1--* Rents:id_renter",
-        "Rents:id_rent 1--* Payments:id_rent"
+        "Renter:id_renter 1--* Rents:id_renter"
     ],
-    "rankAdjustments": [],
-    "label": ""
+    "rankAdjustments": "",
+    "label": "04"
 }

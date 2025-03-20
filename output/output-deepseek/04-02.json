@@ -1,0 +1,61 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "driver_license": "varchar(50) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "zip_code": "varchar(10) NOT NULL",
+      "rooms": "int() NOT NULL",
+      "is_rented": "boolean() NOT NULL",
+      "+agent_id": "int() NOT NULL",
+      "+owner_id": "int() NOT NULL"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "bank_account": "varchar(50) NOT NULL"
+    },
+    "RentPayment": {
+      "*payment_id": "int() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "month": "varchar(50) NOT NULL",
+      "is_transferred": "boolean() NOT NULL",
+      "+property_id": "int() NOT NULL",
+      "+agent_id": "int() NOT NULL"
+    },
+    "RentalAgreement": {
+      "*renter_id": "int() NOT NULL",
+      "*property_id": "int() NOT NULL",
+      "*start_date": "date() NOT NULL",
+      "end_date": "date()",
+      "monthly_rent": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "PropertyOwner:owner_id 1--* Property:owner_id",
+    "Renter:renter_id *--* RentalAgreement:renter_id",
+    "Property:property_id *--* RentalAgreement:property_id",
+    "Property:property_id 1--* RentPayment:property_id",
+    "Agent:agent_id 1--* RentPayment:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

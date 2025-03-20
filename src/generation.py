@@ -153,7 +153,7 @@ def call(input_requirements):
     model = create_model()
     print(model)
 
-    prompt = """
+    prompt = f"""
     Here's an additional example to help understand different relationship types:
 
     #### **Input:**
@@ -172,9 +172,9 @@ def call(input_requirements):
     5. Determine foreign keys based on relationships
     6. Format everything according to the required JSON structure
 
+    the output json must be inside '''
     Database description: {input_requirements}
     """
-
     messages = [
       SystemMessage(system_message),
       HumanMessage(prompt)
@@ -190,41 +190,23 @@ def save_json(json_content, output_file):
         json.dump(json_content, f, indent=2)
     return output_file
 
+import re
+import json
+
 def extract_json(raw_answer: str):
     try:
-        matches = re.findall(r'```json\s*(.*?)\s*```', raw_answer, re.DOTALL)
+        # Try to find JSON within '''json ... ''' or ```json ... ```
+        matches = re.findall(r"(?:'''|```)(?:json)?\s*(.*?)\s*(?:'''|```)", raw_answer, re.DOTALL)
+        
         if matches:
-            raw_answer = matches[-1]
+            raw_answer = matches[-1]  
         else:
-            raw_answer = re.sub(r'^(Here is the JSON output based on the given requirements:\s*)', '', raw_answer, flags=re.IGNORECASE).strip()
-
+            # If no block with '''json''' or ```json```, try to clean manually
+            raw_answer = re.sub(r'^(Here.*?:\s*)', '', raw_answer, flags=re.IGNORECASE).strip()
+            
+        raw_answer = raw_answer.strip() 
+        
         return json.loads(raw_answer)
-
     except json.JSONDecodeError as e:
-        print(f"Erro ao decodificar JSON: {e}")
+        print(f"Error decoding JSON: {e}")
         return None
-
-    
-
-'''prompt_extract = HumanMessage(f"Read the description of the database, understand, then and extract requirements, tables, keys and columns,then generate de ER diagram. this is the description : {input_requirements}")
-    messages_extract = [
-      prompt_extract
-    ]
-
-    answer_initial = model.predict_messages(messages_extract).content
-
-    prompt_json = HumanMessage(f"Translate this informations into the json output {answer_initial}")
-    messages_json = [
-      SystemMessage(system_message),
-      prompt_json
-    ]
-
-    answer_json = model.predict_messages(messages_json).content
-
-    prompt_validate = HumanMessage(f"Validate if json is in correct format regarding rules and descriptions. Give me ONLY the json {answer_json}")
-    messages = [
-      SystemMessage(system_message),
-      prompt_json
-    ]
-
-    answer_validate = model.predict_messages(messages).content'''

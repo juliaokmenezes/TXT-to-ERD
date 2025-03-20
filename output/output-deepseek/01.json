@@ -1,0 +1,49 @@
+{
+  "tables": {
+    "Agent": {
+      "*AgentID": "int() NOT NULL",
+      "Name": "varchar(100)",
+      "Phone": "varchar(20)",
+      "Email": "varchar(100)",
+      "LicenseNumber": "varchar(50)"
+    },
+    "Property": {
+      "*PropertyID": "int() NOT NULL",
+      "Address": "varchar(200)",
+      "Price": "decimal(10,2)",
+      "Type": "varchar(50)",
+      "+AgentID": "int()"
+    },
+    "PropertyOwner": {
+      "*OwnerID": "int() NOT NULL",
+      "Name": "varchar(100)",
+      "Phone": "varchar(20)",
+      "Email": "varchar(100)",
+      "DateOfBirth": "date()"
+    },
+    "PropertyOwnerProperty": {
+      "*PropertyID": "int() NOT NULL",
+      "*OwnerID": "int() NOT NULL"
+    },
+    "Renter": {
+      "*RenterID": "int() NOT NULL",
+      "Name": "varchar(100)",
+      "Phone": "varchar(20)",
+      "Email": "varchar(100)",
+      "DateOfBirth": "date()"
+    },
+    "PropertyRenter": {
+      "*PropertyID": "int() NOT NULL",
+      "*RenterID": "int() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:AgentID *--1 Property:AgentID",
+    "Property:PropertyID *--* PropertyOwnerProperty:PropertyID",
+    "PropertyOwner:OwnerID *--* PropertyOwnerProperty:OwnerID",
+    "Property:PropertyID *--* PropertyRenter:PropertyID",
+    "Renter:RenterID *--* PropertyRenter:RenterID"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

@@ -1,0 +1,69 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+owner_id": "int()",
+      "address": "varchar(255)",
+      "property_type": "varchar(50)",
+      "last_maintenance_date": "date()"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date()",
+      "end_date": "date()",
+      "clauses": "text()",
+      "deposit_refunded": "boolean()",
+      "guarantor_required": "boolean()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date()",
+      "amount": "decimal(10,2)",
+      "month": "varchar(20)",
+      "payer_account": "varchar(50)",
+      "receiver_account": "varchar(50)"
+    },
+    "Referral": {
+      "*referral_id": "int() NOT NULL",
+      "+referring_agent_id": "int()",
+      "+referred_agent_id": "int()",
+      "referral_date": "date()",
+      "commission": "decimal(10,2)"
+    }
+  },
+  "relations": [
+    "Property:owner_id 1--* Owner:owner_id",
+    "Contract:renter_id 1--* Renter:renter_id",
+    "Contract:property_id 1--* Property:property_id",
+    "Payment:contract_id 1--* Contract:contract_id",
+    "Referral:referring_agent_id 1--* Agent:agent_id",
+    "Referral:referred_agent_id 1--* Agent:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

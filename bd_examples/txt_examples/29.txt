@@ -1,0 +1,13 @@
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renters, properties, and property owners.
+
+- A real estate agent can manage more than one property, from differents owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time.
+- A property only has one owner, and could only be rented by one renter by time.
+- Each property is managed by just one A real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- The system must mantin a maintenance records, it  must include: date, description, cost, and responsible contractor.
+-  Renters can request lease extensions before the contract expires. The extension should keep the old rent value, and the new one
+- Renters can request lease extensions before the contract expires. The extension should keep the old rent value, and the new one

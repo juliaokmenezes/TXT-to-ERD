@@ -15,7 +15,8 @@ def pipeline(requirements_file, output_folder):
         print("Calling LLM")
         llm_response = call(input_requirements)
         print("---------\n")
-        
+
+
         print("Cleaning response")
         print("---------\n")
         clean_json = extract_json(llm_response)
@@ -43,8 +44,8 @@ def pipeline(requirements_file, output_folder):
         return None
 
 if __name__ == "__main__":
-    requirements_folder = "./bd_examples/txt_examples/"  
-    output_folder = "./output/bd-teste"  
+    requirements_folder = "./bd_examples/txt_examples"  
+    output_folder = "./output/output-atv"  
 
     files = sorted(os.listdir(requirements_folder))  
     

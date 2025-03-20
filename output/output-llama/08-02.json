@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL",
+      "salary": "decimal(10,2) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "owner_id": "int()"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text() NOT NULL",
+      "security_deposit_refunded": "boolean() NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "percentage": "decimal(10,2) NOT NULL"
+    },
+    "RentPayment": {
+      "*rent_payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL"
+    }
+  },
+  "relations": [
+    "Contract:agent_id *--1 Agent:agent_id",
+    "Contract:renter_id *--1 Renter:renter_id",
+    "Contract:property_id *--1 Property:property_id",
+    "Property:owner_id *--1 PropertyOwner:owner_id",
+    "Guarantor:contract_id *--1 Contract:contract_id",
+    "RentPayment:contract_id *--1 Contract:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

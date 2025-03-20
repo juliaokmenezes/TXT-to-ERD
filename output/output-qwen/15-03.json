@@ -1,0 +1,92 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "street": "varchar(100) NOT NULL",
+      "number": "varchar(20)",
+      "neighborhood": "varchar(100)",
+      "city": "varchar(100)",
+      "state": "varchar(100)",
+      "zip_code": "varchar(20)",
+      "last_maintenance_date": "date()"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Contract": {
+      "*contract_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "security_deposit_refunded": "boolean()",
+      "rent_value": "decimal(10,2) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "percentage_covered": "decimal(5,2)"
+    },
+    "ContractGuarantor": {
+      "*contract_guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "+guarantor_id": "int()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "month_paid_for": "date() NOT NULL"
+    },
+    "RentalInsurance": {
+      "*rental_insurance_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "policy_number": "varchar(100) NOT NULL",
+      "coverage_amount": "decimal(10,2) NOT NULL",
+      "provider": "varchar(100) NOT NULL"
+    },
+    "ContractExtension": {
+      "*extension_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "extension_start_date": "date() NOT NULL",
+      "extension_end_date": "date() NOT NULL",
+      "new_rent_value": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "Contract:renter_id *--1 Renter:renter_id",
+    "Contract:property_id *--1 Property:property_id",
+    "ContractGuarantor:contract_id *--1 Contract:contract_id",
+    "ContractGuarantor:guarantor_id *--1 Guarantor:guarantor_id",
+    "Payment:contract_id *--1 Contract:contract_id",
+    "RentalInsurance:renter_id *--1 Renter:renter_id",
+    "ContractExtension:contract_id *--1 Contract:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Rental Management System"
+}

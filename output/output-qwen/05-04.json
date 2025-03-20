@@ -1,0 +1,57 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "description": "text()",
+      "rent_price": "decimal(10,2) NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "deposit_refunded": "boolean() NOT NULL",
+      "utensils_info": "text()"
+    },
+    "RentPayment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount_paid": "decimal(10,2) NOT NULL",
+      "month_paid_for": "date() NOT NULL",
+      "penalty_amount": "decimal(10,2)"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "RentalAgreement:renter_id *--1 Renter:renter_id",
+    "RentalAgreement:property_id *--1 Property:property_id",
+    "RentPayment:agreement_id *--1 RentalAgreement:agreement_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Rental Management System"
+}

@@ -1,0 +1,63 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "zip_code": "varchar(20) NOT NULL",
+      "rent": "decimal(10,2) NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Rental": {
+      "*rental_id": "int() NOT NULL",
+      "+tenant_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+rental_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "month": "varchar(20) NOT NULL",
+      "received_account": "varchar(100) NOT NULL",
+      "sent_account": "varchar(100) NOT NULL"
+    },
+    "Commission": {
+      "*commission_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "percentage": "decimal(5,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "Rental:tenant_id *--1 Tenant:tenant_id",
+    "Rental:property_id *--1 Property:property_id",
+    "Payment:rental_id *--1 Rental:rental_id",
+    "Commission:agent_id *--1 Agent:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

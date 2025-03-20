@@ -1,0 +1,67 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "country": "varchar(100) NOT NULL"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Rental": {
+      "*rental_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+property_id": "int()",
+      "+tenant_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "rent": "decimal(10,2) NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+rental_id": "int()",
+      "+agent_id": "int()",
+      "+property_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    },
+    "Bonus": {
+      "*bonus_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "bonus_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id *--1 Rental:agent_id",
+    "Property:property_id *--1 Rental:property_id",
+    "PropertyOwner:owner_id *--1 Property:property_id",
+    "Tenant:tenant_id *--1 Rental:tenant_id",
+    "Rental:agent_id *--1 Agent:agent_id",
+    "Rental:property_id *--1 Property:property_id",
+    "Rental:tenant_id *--1 Tenant:tenant_id",
+    "Payment:rental_id *--1 Rental:rental_id",
+    "Payment:agent_id *--1 Agent:agent_id",
+    "Payment:property_id *--1 Property:property_id",
+    "Bonus:agent_id *--1 Agent:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency"
+}

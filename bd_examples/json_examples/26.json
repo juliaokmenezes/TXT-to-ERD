@@ -1,0 +1,70 @@
+{
+    "tables": {
+        "RealEstateAgent": {
+            "*id_realEstate": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "login": "varchar(30) NOT NULL",
+            "password_hash": "varchar(255) NOT NULL",
+            "email": "varchar(50) NOT NULL",
+            "role": "enum('admin', 'standard', 'manager) NOT NULL",
+            "rate": "int() NOT NULL"
+        },
+        "Owner": {
+            "*id_owner": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL",
+            "rate": "int() NOT NULL"
+        },
+        "Renter": {
+            "*id_renter": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL",
+            "rate": "int() NOT NULL"
+        },
+        "Property": {
+            "*id_property": "int() NOT NULL",
+            "address": "varchar(200) NOT NULL",
+            "rentValue": "decimal(10,2) NOT NULL",
+            "+id_owner": "int() NOT NULL",
+            "+id_realEstate": "int() NOT NULL",
+            "lastMaintenanceDate": "date() NOT NULL"
+        },
+        "Agreement": {
+            "*id_agreement": "int() NOT NULL",
+            "+id_property": "int() NOT NULL",
+            "+id_renter": "int() NOT NULL",
+            "rentInitialDate": "date() NOT NULL",
+            "rentFinalDate": "date()",
+            "activeContract": "boolean NOT NULL",
+            "monthlyRent": "decimal(10,2) NOT NULL",
+            "depositAmount": "decimal(10,2) NOT NULL",
+            "clauses": "text NOT NULL",
+            "+id_guarantor": "int() ",
+            "depositRefunded": "boolean NOT NULL"
+        },
+        "Payments": {
+            "*id_payment": "int() NOT NULL",
+            "+id_agreement": "int() NOT NULL",
+            "monthReference": "int() NOT NULL",
+            "yearReference": "int() NOT NULL",
+            "amountPaid": "decimal(10,2) NOT NULL",
+            "paymentAccount": "varchar(50) NOT NULL",
+            "receivingAccount": "varchar(50) NOT NULL",
+            "paymentDate": "date() NOT NULL",
+            "paymentMethod": "enum('Boleto', 'PIX', 'Credit Card', 'Bank Transfer')"
+        }
+    },
+    "relations": [
+        "Owner:id_owner 1--* Property:id_owner",
+        "RealEstateAgent:id_realEstate 1--* Property:id_realEstate",
+        "Property:id_property 1--* Agreement:id_property",
+        "Renter:id_renter 1--* Agreement:id_renter",
+        "Agreement:id_agreement 1--* Payments:id_agreement",
+        "Agreement:id_agreement 1--* Guarantor:id_guarantor"
+    ],
+    "rankAdjustments": [],
+    "label": "26"
+}

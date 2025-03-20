@@ -1,0 +1,108 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="E-commerce Database",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "Customer" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Customer</i></td></tr>
+        <tr><td port="customer_id" align="left" cellpadding="5">PK customer_id <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phone" align="left" cellpadding="5">phone <font color="grey60">varchar(20) NOT NULL</font></td></tr>
+        <tr><td port="address_id" align="left" cellpadding="5">FK address_id <font color="grey60">int()</font></td></tr>
+    </table>>];
+    "Address" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Address</i></td></tr>
+        <tr><td port="address_id" align="left" cellpadding="5">PK address_id <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="street" align="left" cellpadding="5">street <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="city" align="left" cellpadding="5">city <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="state" align="left" cellpadding="5">state <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="country" align="left" cellpadding="5">country <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+    </table>>];
+    "Order" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Order</i></td></tr>
+        <tr><td port="order_id" align="left" cellpadding="5">PK order_id <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="customer_id" align="left" cellpadding="5">FK customer_id <font color="grey60">int()</font></td></tr>
+        <tr><td port="order_date" align="left" cellpadding="5">order_date <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="total" align="left" cellpadding="5">total <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+    </table>>];
+    "OrderItem" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>OrderItem</i></td></tr>
+        <tr><td port="order_item_id" align="left" cellpadding="5">PK order_item_id <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="order_id" align="left" cellpadding="5">FK order_id <font color="grey60">int()</font></td></tr>
+        <tr><td port="product_id" align="left" cellpadding="5">FK product_id <font color="grey60">int()</font></td></tr>
+        <tr><td port="quantity" align="left" cellpadding="5">quantity <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="price" align="left" cellpadding="5">price <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+    </table>>];
+    "Product" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Product</i></td></tr>
+        <tr><td port="product_id" align="left" cellpadding="5">PK product_id <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="description" align="left" cellpadding="5">description <font color="grey60">text() NOT NULL</font></td></tr>
+        <tr><td port="price" align="left" cellpadding="5">price <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+    </table>>];
+
+    
+    "Customer":"customer_id"->"Address":"address_id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Order":"customer_id"->"Customer":"customer_id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Order":"order_id"->"OrderItem":"order_item_id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "OrderItem":"order_id"->"Order":"order_id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "OrderItem":"product_id"->"Product":"product_id" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+
+
+    
+
+}
