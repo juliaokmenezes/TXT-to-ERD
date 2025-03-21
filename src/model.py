@@ -1,6 +1,6 @@
 from langchain_groq import ChatGroq
 import os
-MODEL_API_KEY="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"
+
 
 model = "llama3-70b-8192"
 def create_model():
