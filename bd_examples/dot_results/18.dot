@@ -1,0 +1,155 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="18",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "RealEstateAgent" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>RealEstateAgent</i></td></tr>
+        <tr><td port="id_realEstate" align="left" cellpadding="5">PK id_realEstate <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phoneNumber" align="left" cellpadding="5">phoneNumber <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Owner" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Owner</i></td></tr>
+        <tr><td port="id_owner" align="left" cellpadding="5">PK id_owner <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phoneNumber" align="left" cellpadding="5">phoneNumber <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Renter" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Renter</i></td></tr>
+        <tr><td port="id_renter" align="left" cellpadding="5">PK id_renter <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phoneNumber" align="left" cellpadding="5">phoneNumber <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Guarantor" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Guarantor</i></td></tr>
+        <tr><td port="id_guarantor" align="left" cellpadding="5">PK id_guarantor <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="name" align="left" cellpadding="5">name <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="phoneNumber" align="left" cellpadding="5">phoneNumber <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Property" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Property</i></td></tr>
+        <tr><td port="id_property" align="left" cellpadding="5">PK id_property <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="address" align="left" cellpadding="5">address <font color="grey60">varchar(200) NOT NULL</font></td></tr>
+        <tr><td port="rentValue" align="left" cellpadding="5">rentValue <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="id_owner" align="left" cellpadding="5">FK id_owner <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_realEstate" align="left" cellpadding="5">FK id_realEstate <font color="grey60">int() NOT NULL</font></td></tr>
+    </table>>];
+    "Agreement" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Agreement</i></td></tr>
+        <tr><td port="id_agreement" align="left" cellpadding="5">PK id_agreement <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_property" align="left" cellpadding="5">FK id_property <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_renter" align="left" cellpadding="5">FK id_renter <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="rentInitialDate" align="left" cellpadding="5">rentInitialDate <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="rentFinalDate" align="left" cellpadding="5">rentFinalDate <font color="grey60">date()</font></td></tr>
+        <tr><td port="activeContract" align="left" cellpadding="5">activeContract <font color="grey60">boolean NOT NULL</font></td></tr>
+        <tr><td port="monthlyRent" align="left" cellpadding="5">monthlyRent <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="depositAmount" align="left" cellpadding="5">depositAmount <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="clauses" align="left" cellpadding="5">clauses <font color="grey60">text NOT NULL</font></td></tr>
+        <tr><td port="id_guarantor" align="left" cellpadding="5">FK id_guarantor <font color="grey60">int() </font></td></tr>
+        <tr><td port="depositRefunded" align="left" cellpadding="5">depositRefunded <font color="grey60">boolean NOT NULL</font></td></tr>
+    </table>>];
+    "Payments" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Payments</i></td></tr>
+        <tr><td port="id_payment" align="left" cellpadding="5">PK id_payment <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_agreement" align="left" cellpadding="5">FK id_agreement <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="monthReference" align="left" cellpadding="5">monthReference <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="yearReference" align="left" cellpadding="5">yearReference <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="amountPaid" align="left" cellpadding="5">amountPaid <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="paymentAccount" align="left" cellpadding="5">paymentAccount <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+        <tr><td port="receivingAccount" align="left" cellpadding="5">receivingAccount <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+        <tr><td port="paymentDate" align="left" cellpadding="5">paymentDate <font color="grey60">date() NOT NULL</font></td></tr>
+    </table>>];
+    "AgreementGuarantors" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>AgreementGuarantors</i></td></tr>
+        <tr><td port="id_agreementGuarantor" align="left" cellpadding="5">PK id_agreementGuarantor <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_agreement" align="left" cellpadding="5">FK id_agreement <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_guarantor" align="left" cellpadding="5">FK id_guarantor <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="percentageCovered" align="left" cellpadding="5">percentageCovered <font color="grey60">decimal(5,2) NOT NULL</font></td></tr>
+    </table>>];
+
+    
+    "Owner":"id_owner"->"Property":"id_owner" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "RealEstateAgent":"id_realEstate"->"Property":"id_realEstate" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Property":"id_property"->"Agreement":"id_property" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Renter":"id_renter"->"Agreement":"id_renter" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Agreement":"id_agreement"->"Payments":"id_agreement" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Agreement":"id_agreement"->"AgreementGuarantors":"id_agreement" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Guarantor":"id_guarantor"->"AgreementGuarantors":"id_guarantor" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+
+
+    
+
+}

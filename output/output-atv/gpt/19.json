@@ -1,0 +1,81 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "salary": "decimal(10,2)"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()",
+      "address": "varchar(200)",
+      "city": "varchar(100)",
+      "state": "varchar(100)",
+      "zip_code": "varchar(20)",
+      "last_maintenance_date": "date()"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "+guarantor_id": "int()",
+      "start_date": "date()",
+      "end_date": "date()",
+      "clauses": "text()",
+      "security_deposit_refunded": "boolean()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date()",
+      "amount": "decimal(10,2)",
+      "payment_account": "varchar(100)",
+      "receiving_account": "varchar(100)",
+      "month_paid_for": "varchar(20)"
+    },
+    "Referral": {
+      "*referral_id": "int() NOT NULL",
+      "+referring_agent_id": "int()",
+      "+referred_agent_id": "int()",
+      "referral_date": "date()",
+      "commission_amount": "decimal(10,2)"
+    }
+  },
+  "relations": [
+    "Property:owner_id *--1 PropertyOwner:owner_id",
+    "Property:agent_id *--1 Agent:agent_id",
+    "RentalAgreement:property_id *--1 Property:property_id",
+    "RentalAgreement:renter_id *--1 Renter:renter_id",
+    "RentalAgreement:guarantor_id *--1 Guarantor:guarantor_id",
+    "Payment:agreement_id *--1 RentalAgreement:agreement_id",
+    "Referral:referring_agent_id *--1 Agent:agent_id",
+    "Referral:referred_agent_id *--1 Agent:agent_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Management System"
+}
