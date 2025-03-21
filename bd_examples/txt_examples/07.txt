@@ -1,9 +1,9 @@
 A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
 
-- A real estate agent can manage more than one property, from diferents owners.
+- A real estate agent can manage more than one property, from different owners.
 - A property owner can own multiple properties. 
-- A renter may have rented none, or, more than one property over time.
+- A renter may have rented none, or, more than one property over time, but only one at a time.
 - A property only has one owner, and could only be rented by one renter at a time.
-- Each property is managed by just one A real estate agent
+- Each property is managed by just one real estate agent
 - It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
-- The agency must be responsible for recive payments than pass to property owner, and the database must sinalize that the money was passed. 
+- The agency must be responsible for receive payments than pass to property owner, and the database must sinalize that the money was passed. 

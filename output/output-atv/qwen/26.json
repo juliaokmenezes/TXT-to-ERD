@@ -1,0 +1,77 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)",
+      "username": "varchar(100) NOT NULL",
+      "password": "varchar(100) NOT NULL",
+      "role": "varchar(50) NOT NULL"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)",
+      "rating": "float()"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)",
+      "rating": "float()"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "last_maintenance_date": "date()"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "deposit_refunded": "boolean()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "month": "varchar(20) NOT NULL",
+      "sender_account": "varchar(50)",
+      "receiver_account": "varchar(50)"
+    },
+    "Rating": {
+      "*rating_id": "int() NOT NULL",
+      "+rater_id": "int()",
+      "+rated_id": "int()",
+      "rating_value": "int() NOT NULL",
+      "rating_type": "varchar(50) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:owner_id 1--1 Owner:owner_id",
+    "Property:agent_id 1--1 Agent:agent_id",
+    "RentalAgreement:property_id 1--1 Property:property_id",
+    "RentalAgreement:renter_id 1--* Renter:renter_id",
+    "Payment:agreement_id 1--1 RentalAgreement:agreement_id",
+    "Rating:rater_id *--* Agent:agent_id",
+    "Rating:rated_id *--* Owner:owner_id",
+    "Rating:rated_id *--* Renter:renter_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

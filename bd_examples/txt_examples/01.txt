@@ -1,9 +1,9 @@
-A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register A real estate agent, renter, properties, and property owners.
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register a real estate agent, renter, properties, and property owners.
 
-- A real estate agent can manage more than one property, from diferents owners.
+- A real estate agent can manage more than one property, from differents owners.
 - A property owner can only own one property. 
-- A renter can only rent one property
+- A renter can only rent one property ever.
 - A property only has one owner, and could only be rented by one renter.
-- Each property is managed by just one A real estate agent
+- Each property is managed by just one real estate agent
 
 

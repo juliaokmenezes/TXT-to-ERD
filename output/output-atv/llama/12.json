@@ -1,0 +1,68 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "type": "varchar(50) NOT NULL"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "security_deposit_refund": "boolean() NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "payment_amount": "decimal(10,2) NOT NULL",
+      "fine_amount": "decimal(10,2)",
+      "delay_days": "int()"
+    },
+    "Account": {
+      "*account_id": "int() NOT NULL",
+      "account_number": "varchar(50) NOT NULL",
+      "account_type": "varchar(50) NOT NULL"
+    },
+    "PaymentAccount": {
+      "*payment_id": "int() NOT NULL",
+      "+payment_id": "int()",
+      "+account_id": "int()",
+      "account_type": "varchar(50) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:owner_id *--1 PropertyOwner:owner_id",
+    "Property:agent_id *--1 Agent:agent_id",
+    "RentalAgreement:property_id *--1 Property:property_id",
+    "RentalAgreement:renter_id *--1 Renter:renter_id",
+    "Payment:agreement_id *--1 RentalAgreement:agreement_id",
+    "PaymentAccount:payment_id *--1 Payment:payment_id",
+    "PaymentAccount:account_id *--1 Account:account_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

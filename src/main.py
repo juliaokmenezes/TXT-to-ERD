@@ -45,7 +45,7 @@ def pipeline(requirements_file, output_folder):
 
 if __name__ == "__main__":
     requirements_folder = "./bd_examples/txt_examples"  
-    output_folder = "./output/output-atv"  
+    output_folder = "./output/output-atv/llama"  
 
     files = sorted(os.listdir(requirements_folder))  
     

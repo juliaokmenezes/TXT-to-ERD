@@ -16,7 +16,8 @@
             "*id_renter": "int() NOT NULL",
             "name": "varchar(100) NOT NULL",
             "phoneNumber": "char(20) NOT NULL",
-            "email": "varchar(50) NOT NULL"
+            "email": "varchar(50) NOT NULL",
+            "salary": "decimal(10,2) NOT NULL"
         },
         "Guarantor": {
             "*id_guarantor": "int() NOT NULL",
@@ -69,7 +70,7 @@
         "Property:id_property 1--* Agreement:id_property",
         "Renter:id_renter 1--* Agreement:id_renter",
         "Agreement:id_agreement 1--* Payments:id_agreement",
-        "Agreement:id_agreement 1--* Guarantor:id_guarantor",
+        "Agreement:id_agreement *--1 Guarantor:id_guarantor",
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referred",
         "RealEstateAgent:id_realEstate 1--* AgentReferrals:id_agent_referrer"
     ],

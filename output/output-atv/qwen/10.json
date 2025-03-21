@@ -1,0 +1,57 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "number_of_agreements": "int()"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "zip_code": "varchar(20) NOT NULL",
+      "rent_amount": "decimal(10,2) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Lease": {
+      "*lease_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+lease_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "month_paid_for": "varchar(20) NOT NULL",
+      "received_by_owner": "boolean NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id 1--1 Agent:agent_id",
+    "Property:owner_id 1--1 Owner:owner_id",
+    "Lease:property_id 1--1 Property:property_id",
+    "Lease:renter_id 1--* Renter:renter_id",
+    "Payment:lease_id 1--1 Lease:lease_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Database"
+}

@@ -1,0 +1,76 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "address": "varchar(255) NOT NULL",
+      "description": "text()",
+      "price": "decimal(10,2) NOT NULL",
+      "parking_space": "boolean"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Lease": {
+      "*lease_id": "int() NOT NULL",
+      "+renter_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text()",
+      "deposit_refunded": "boolean"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+lease_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL",
+      "payment_account": "varchar(100) NOT NULL",
+      "receiving_account": "varchar(100) NOT NULL",
+      "month": "varchar(20) NOT NULL"
+    },
+    "Maintenance": {
+      "*maintenance_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "maintenance_date": "date() NOT NULL",
+      "description": "text() NOT NULL",
+      "cost": "decimal(10,2) NOT NULL",
+      "contractor": "varchar(100) NOT NULL"
+    },
+    "Extension": {
+      "*extension_id": "int() NOT NULL",
+      "+lease_id": "int()",
+      "new_end_date": "date() NOT NULL",
+      "old_rent_value": "decimal(10,2) NOT NULL",
+      "new_rent_value": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id 1--* Agent:agent_id",
+    "Property:owner_id 1--* Owner:owner_id",
+    "Lease:renter_id 1--* Renter:renter_id",
+    "Lease:property_id 1--* Property:property_id",
+    "Payment:lease_id 1--* Lease:lease_id",
+    "Maintenance:property_id 1--* Property:property_id",
+    "Extension:lease_id 1--* Lease:lease_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Management System"
+}
