@@ -1,0 +1,31 @@
+Este é um sistema de gestão imobiliária, nele é permitido o cadastro e gerenciamento de agentes imobiliários, proprietários, inquilinos e propriedades, além da administração de contratos de aluguel. 
+
+1. **Cadastro de Agentes Imobiliários**
+   1.1. Cada agente imobiliário pode gerenciar várias propriedades.
+   1.2. Cada propriedade é gerenciada por um único agente imobiliário.
+
+2. **Cadastro de Proprietários**
+   2.1. Cada proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar obrigatoriamente vinculada a um único proprietário.
+
+3. **Cadastro de Inquilinos**
+   3.1. Um inquilino pode estar cadastrado no sistema sem necessariamente ter alugado uma propriedade.
+   3.2. Um inquilino pode alugar uma ou mais propriedades ao longo do tempo, mas apenas uma por vez.
+   3.3. Um inquilino pode não ter nenhuma propriedade alugada em determinado momento.
+
+4. **Cadastro de Propriedades**
+   4.1. Uma propriedade pode existir no sistema sem estar alugada.
+   4.2. Uma propriedade pode ser alugada por diferentes inquilinos ao longo do tempo, mas apenas um por vez.
+   4.3. Quando um contrato de aluguel se encerra, a propriedade pode ser alugada novamente para outro inquilino.
+   4.4. Cada propriedade deve ter um único proprietário.
+
+5. Gestão de Pagamentos
+   5.1. Deve ser possível registrar pagamentos mensais, ou seja, o valor do aluguel referente a aquele mês, que devem ser pagos integralmente.
+   5.2. Os registros de pagamento devem incluir informações sobre as contas de pagamento e recebimento.
+   5.3. É necessário indicar o mês para o qual o pagamento foi feito.
+
+6. Contratos de Aluguel
+   6.1. Cada contrato de aluguel deve incluir uma data de início e término.
+   6.2. Deve haver um campo para cláusulas no contrato de aluguel.
+   6.3. Ao final do contrato, deve ser indicado se o depósito de segurança foi reembolsado, sendo o reembolso apenas integral.
+

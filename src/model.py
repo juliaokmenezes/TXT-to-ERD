@@ -1,15 +1,16 @@
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 import os
 
 
-model = "llama3-70b-8192"
+OPENAI_API_KEY="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"
+
+
+# Configuração do modelo
 def create_model():
-    result = ChatGroq(
-        model_name=model,
-        groq_api_key=MODEL_API_KEY,
+    model = ChatOpenAI(
+        model_name="gpt-4o",  
+        openai_api_key=OPENAI_API_KEY,
         temperature=0,
-        max_tokens=None,
-        request_timeout=35,
-        max_retries=3,
+        max_tokens=1000  
     )
-    return result
+    return model

@@ -1,0 +1,13 @@
+Uma agência imobiliária precisa de um banco de dados para gerenciar suas propriedades alugadas. Dentro deste sistema, é possível registrar agentes, locatários, propriedades e proprietários de imóveis.
+
+- Um agente imobiliário pode gerenciar mais de uma propriedade, de diferentes proprietários.
+- Um proprietário de imóvel pode possuir várias propriedades.
+- Um locatário pode não ter alugado nenhuma, ou mais de uma propriedade ao longo do tempo, mas apenas uma de cada vez.
+- Uma propriedade tem apenas um proprietário e pode ser alugada por apenas um locatário de cada vez.
+- Cada propriedade é gerenciada por apenas um agente imobiliário.
+- Deve ser possível registrar pagamentos, que devem ser pagos integralmente mensalmente, incluindo informações sobre as contas de pagamento e recebimento. Também é necessário indicar o mês para o qual o pagamento foi feito.
+- O contrato de locação deve incluir uma data de início e término, bem como um campo para cláusulas. Ao final do contrato, deve haver uma indicação de se o depósito de segurança foi reembolsado ou não, podendo ser reembolsado apenas integralmente.
+- Se o valor do contrato exceder 50% do salário declarado do locatário, um fiador deve assinar o contrato conjuntamente. O fiador pode assinar mais de um contrato.
+- Sempre, antes de alugar uma propriedade, deve-se verificar a data da última manutenção realizada pelo proprietário. Se o tempo entre a última manutenção e o início do novo contrato exceder 9 meses, isso deve ser registrado.
+- Agentes imobiliários podem ser indicados por outros agentes para atrair novos clientes, e é necessário armazenar a data da indicação e o valor monetário da comissão recebida pelo agente imobiliário que fez a indicação.
+- Os pagamentos podem ser feitos usando diferentes métodos, como `Boleto`, `PIX`, `Cartão de Crédito` ou `Transferência Bancária`.

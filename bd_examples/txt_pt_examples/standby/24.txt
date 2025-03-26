@@ -1,0 +1,38 @@
+Claro, vou reformular os requisitos para torná-los mais claros e consistentes, seguindo o exemplo de especificação fornecido:
+
+1. Cadastro de Agentes Imobiliários
+   1.1. Um agente imobiliário pode gerenciar várias propriedades, pertencentes a diferentes proprietários.
+   1.2. Cada propriedade é gerenciada por um único agente imobiliário.
+
+2. Cadastro de Proprietários de Imóveis
+   2.1. Um proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar obrigatoriamente vinculada a um único proprietário.
+
+3. Cadastro de Locatários
+   3.1. Um locatário pode alugar várias propriedades ao longo do tempo, mas apenas uma de cada vez.
+
+4. Locação de Propriedades
+   4.1. Uma propriedade pode ser alugada para no máximo um locatário por vez.
+   4.2. O contrato de locação deve incluir uma data de início e término, além de cláusulas contratuais.
+   4.3. Ao término do contrato, deve ser indicado se o depósito de segurança foi reembolsado integralmente.
+
+5. Gestão de Pagamentos
+   5.1. Os pagamentos devem ser registrados mensalmente e pagos integralmente.
+   5.2. Devem ser incluídas informações sobre as contas de pagamento e recebimento, além do mês referente ao pagamento.
+   5.3. Os pagamentos podem ser realizados através de `Boleto`, `PIX`, `Cartão de Crédito` ou `Transferência Bancária`.
+
+6. Fiadores
+   6.1. Se o valor do contrato exceder 50% do salário declarado do locatário, um fiador deve assinar o contrato.
+   6.2. Um fiador pode assinar mais de um contrato.
+
+7. Manutenção de Propriedades
+   7.1. Antes de alugar uma propriedade, deve-se verificar a última data de manutenção realizada pelo proprietário.
+   7.2. Se o tempo entre a última manutenção e o início do novo contrato exceder 9 meses, isso deve ser registrado.
+
+8. Acesso ao Sistema
+   8.1. Um agente imobiliário deve ter uma conta de usuário com login e senha para visualizar contratos.
+   8.2. O administrador tem permissões para ler, editar e excluir contratos.
+   8.3. O gerente tem permissão para editar e visualizar contratos.
+   8.4. Usuários padrão podem apenas visualizar contratos.
+
+Essas reformulações visam melhorar a clareza e a estrutura dos requisitos, mantendo o conteúdo original.

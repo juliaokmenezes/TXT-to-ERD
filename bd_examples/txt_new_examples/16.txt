@@ -1,0 +1,35 @@
+Este é um sistema de gestão imobiliária, nele é permitido o cadastro e gerenciamento de agentes imobiliários, proprietários, inquilinos e propriedades, além da administração de contratos de aluguel. 
+
+1. **Cadastro de Agentes Imobiliários**
+   1.1. Cada agente imobiliário pode gerenciar várias propriedades.
+   1.2. Cada propriedade é gerenciada por um único agente imobiliário.
+
+2. **Cadastro de Proprietários**
+   2.1. Cada proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar obrigatoriamente vinculada a um único proprietário.
+
+3. **Cadastro de Inquilinos**
+   3.1. Um inquilino pode estar cadastrado no sistema sem necessariamente ter alugado uma propriedade.
+   3.2. Um inquilino pode alugar diferentes propriedades ao longo do tempo, mas apenas uma por vez.
+   3.3. Um inquilino pode não ter nenhuma propriedade alugada em determinado momento.
+
+4. **Cadastro de Propriedades**
+   4.1. Uma propriedade pode existir no sistema sem estar alugada.
+   4.2. Uma propriedade pode ser alugada por diferentes inquilinos ao longo do tempo, mas apenas um por vez.
+   4.3. Quando um contrato de aluguel se encerra, a propriedade pode ser alugada novamente para outro inquilino.
+   4.4. Cada propriedade deve ter um único proprietário.
+
+5. Gestão de Pagamentos
+   5.1. Deve ser possível registrar pagamentos mensais, ou seja, o valor do aluguel referente àquele mês, que devem ser pagos integralmente.
+   5.2. Cada pagamento deve registrar as contas envolvidas (pagador e recebedor), além do valor e da data do pagamento.
+   5.3. Os pagamentos podem ser realizados através de diferentes métodos: `Boleto`, `PIX`, `Cartão de Crédito` ou `Transferência Bancária`.
+
+6. Manutenção de Propriedades
+   6.1. Antes de alugar uma propriedade, o sistema deve verificar a última data de manutenção registrada pelo proprietário.
+   6.2. Se o tempo entre a última manutenção e o início do novo contrato exceder 9 meses, o sistema deve registrar essa informação e notificar as partes envolvidas.
+
+7. Avaliações
+   7.1. O sistema deve permitir avaliações anônimas de 0 a 10.
+   7.2. Agentes, proprietários e locatários podem avaliar uns aos outros apenas após o término de um contrato no qual estiveram envolvidos.    
+   7.3. A pontuação de cada membro do sistema deve ser a média geral das notas recebidas.
+

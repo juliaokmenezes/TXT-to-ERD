@@ -1,0 +1,33 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "endereco": "varchar(200) NOT NULL",
+      "+id_agente": "int()",
+      "+id_proprietario": "int()",
+      "+id_locatario": "int()"
+    }
+  },
+  "relations": [
+    "Propriedade:id_agente *--1 AgenteImobiliario:id_agente",
+    "Propriedade:id_proprietario *--1 Proprietario:id_proprietario",
+    "Propriedade:id_locatario ?--1 Locatario:id_locatario"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o de Propriedades Alugadas"
+}

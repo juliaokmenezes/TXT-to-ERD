@@ -1,0 +1,65 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "data_indicacao": "date()",
+      "comissao": "decimal(10,2)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "salario_declarado": "decimal(10,2)"
+    },
+    "Fiador": {
+      "*id_fiador": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_proprietario": "int()",
+      "+id_agente": "int()",
+      "endereco": "varchar(200) NOT NULL",
+      "ultima_manutencao": "date()"
+    },
+    "Contrato": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_locatario": "int()",
+      "+id_propriedade": "int()",
+      "+id_fiador": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_termino": "date() NOT NULL",
+      "clausulas": "text()",
+      "deposito_reembolsado": "boolean()"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "mes_referente": "varchar(20) NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "conta_pagamento": "varchar(100)",
+      "conta_recebimento": "varchar(100)"
+    },
+    "Multa": {
+      "*id_multa": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "motivo": "text() NOT NULL",
+      "evidencias": "text()"
+    }
+  },
+  "relations": [
+    "Propriedade:id_proprietario 1--* Proprietario:id_proprietario",
+    "Propriedade:id_agente 1--* AgenteImobiliario:id_agente",
+    "Contrato:id_locatario 1--* Locatario:id_locatario",
+    "Contrato:id_propriedade 1--1 Propriedade:id_propriedade",
+    "Contrato:id_fiador ?--* Fiador:id_fiador",
+    "Pagamento:id_contrato 1--1 Contrato:id_contrato",
+    "Multa:id_contrato 1--1 Contrato:id_contrato"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o de Propriedades Alugadas"
+}

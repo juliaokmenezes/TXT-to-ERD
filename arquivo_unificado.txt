@@ -1,0 +1,385 @@
+01.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register a real estate agent, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from differents owners.
+- A property owner can only own one property. 
+- A renter can only rent one property ever.
+- A property only has one owner, and could only be rented by one renter.
+- Each property is managed by just one real estate agent
+
+
+
+------------------------------
+02.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register A real estate agents, renters, properties, and property owners.
+
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter can only rent one property ever.
+- A property only has one owner, and each property can be rented by only one renter at a time.
+- Each property is managed by just one real estate agent
+
+------------------------------
+03.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register real estate agent, renters, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties.
+- A renter may have no active rentals or just one.
+- A property only has one owner, and each property can be rented by only one renter by time.
+- Each property is managed by just one  real estate agent
+
+------------------------------
+04.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register a real estate agent,  renters, properties, and property owners.
+
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one  real estate agent
+
+------------------------------
+05.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A property owner can own multiple properties.
+- A renter may have rented one, or, more than one property over time, but only one at a time.
+- A real estate agent can manage more than one property, from different owners.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+
+------------------------------
+06.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+-  A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+
+------------------------------
+07.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The agency must be responsible for receive payments than pass to property owner, and the database must sinalize that the money was passed. 
+------------------------------
+08.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The agency must be responsible for receive payments than pass to property owner. On top of the rent, the agency charges a percentage that will vary each month depending on inflation, so the database should be able to store The monetary amount paid in respect of the percentage to the agency for that month.
+------------------------------
+09.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The agency must be responsible for receive payments than pass to property owner. The system must verify that the payment is on current coin.
+------------------------------
+10.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The agency must be responsible for recieve payments than pass to property owner, and the database must sinalize that the money was passed.
+- A real estate agent must have a register the number of agreements signed.
+------------------------------
+11.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+------------------------------
+12.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- The agreement must register the date of rent payment,and it should be possible to record the amount of the fine to be applied if there is a delay in paying the rent, that is relative to delay days.
+------------------------------
+13.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- It should be possible to register information about the utensils present in the property, if the property has it. This campus in system must be a text type.
+------------------------------
+14.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- It must be possible to register, in agreement, which bills belong to the renter and which to the owner of the property. the available bills are electricity, water, gas and sewage. 
+------------------------------
+15.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+------------------------------
+16.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+------------------------------
+17.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Before sign  contract, after the inspection, it is necessary to record whether the property was damaged by the last renter and whether the owner has repaired it. This dynamic must be updated with each new contract. If it's the first contract, the field serves to indicate the initial state of the property, whether or not there is any damage noted in the inspection, and whether the owner has made the adjustment
+
+------------------------------
+18.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- A contract may have multiple guarantors, each covering a percentage of the rent. If a guarantor withdraws, a new one must be added to keep the contract active.
+------------------------------
+19.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, one guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, the date must be register.
+- Real Estate Agents can be referred by other agents to attract new clients, and it is necessary to store the date of the referral and the monetary value of commission, received by the referring Real Estate Agent. 
+------------------------------
+20.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- A property should have a field informing the type, house, apartment, villa or co-living space.
+------------------------------
+21.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- A property should have a campus informing the type, house, apartment, villa or co-living space.
+- If the property is an co-living space, each renter has a separate contract and pays rent individually. 
+------------------------------
+22.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- Real Estate Agents can be referred by other agents to attract new clients, and it is necessary to store the date of the referral and the monetary value of commission, received by the referring Real Estate Agent. 
+- If the property is damaged during the rental period, the owner can request a fine. If it is a first offense, they will only receive a warning. The fine must include the reason and concrete evidence of the event
+------------------------------
+23.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- Real Estate Agents can be referred by other agents to attract new clients, and it is necessary to store the date of the referral and the monetary value of commission, received by the referring Real Estate Agent. 
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+------------------------------
+24.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- A real state agent, has a user account with login and password on the real state system, it serve for view contracts. 
+- The admin has all permissions(read, edit and delete contracts), the manager has only edit and view permission, and the standard can only view contracts
+------------------------------
+25.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- If the contract value exceeds 50% of the renter’s reported salary, a guarantor must sign the contract jointly. The guarantor can assign more than one agreement.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- A real state agent, has a user account with login and password on the real state system, it serve for view contracts. 
+- The admin has all permissions(read, edit and delete contracts), the manager has only edit and view permission, and the standard can only view contracts
+- It must be possible to recover a historical rent prices for each property.
+------------------------------
+26.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Every time, before renting a property, the last maintenance date performed by the owner must be checked. If the time between the last maintenance and the start of the new contract exceeds 9 months, it must be register.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- A real state agent, has a user account with login and password on the real state system, it serve for view contracts. 
+- The admin has all permissions(read, edit and delete contracts), the manager has only edit and view permission, and the standard can only view contracts
+- In system, it should be possible give rates, from 0 to 10. Agents rate  owners and rentes, owners to rate agents and renters and renters to rate owners and agents. Each member's system score should be an overall average of their scores received. It must be anonymus. 
+
+------------------------------
+27.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- A renter can opt for rental insurance for a agreement, which covers damage and unpaid rent. The system must store policy number, coverage amount, and insurance provider
+------------------------------
+28.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- The system must mantain a maintenance records, it  must include: date, description, cost, and responsible contractor.
+
+------------------------------
+29.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- The system must mantain a maintenance records, it  must include: date, description, cost, and responsible contractor.
+- Renters can request lease extensions before the contract expires. The extension should keep the old rent value, and the new one
+------------------------------
+30.txt :
+A real estate agency needs a database to manage its rented properties. Within this system, it is possible to register agents, renter, properties, and property owners.
+
+- A real estate agent can manage more than one property, from different owners.
+- A property owner can own multiple properties. 
+- A renter may have rented none, or, more than one property over time, but only one at a time.
+- A property only has one owner, and could only be rented by one renter at a time.
+- Each property is managed by just one real estate agent
+- It must be possible to register payments, it must be paid in full on a monthly basis, including information on the payment and receiving accounts. It is also necessary to indicate the month for which the payment was made.
+- The rental agreement must include a start and end date, as well as a field for clauses. At the end of the contract, there must be an indication of whether the security deposit was refunded or not, it can only be refunded in full.
+- Payments can be made using different methods, such as `Boleto`, `PIX`, `Credit Card`, or `Bank Transfer`.
+- The system must mantain a maintenance records, it  must include: date, description, cost, and responsible contractor.
+- Renters can request lease extensions before the contract expires. The extension should keep the old rent value, and the new one
+- A property may have one assigned parking space, or none at all. If a parking space exists, it is registered in the system.
+------------------------------

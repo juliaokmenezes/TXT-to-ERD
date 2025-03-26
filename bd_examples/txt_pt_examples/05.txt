@@ -1,0 +1,7 @@
+Uma agência imobiliária precisa de um banco de dados para gerenciar suas propriedades alugadas. Dentro deste sistema, é possível registrar agentes, locatários, propriedades e proprietários de imóveis.
+
+- Um proprietário de imóvel pode possuir várias propriedades.
+- Um locatário pode ter alugado uma ou mais propriedades ao longo do tempo, mas apenas uma de cada vez.
+- Um agente imobiliário pode gerenciar mais de uma propriedade, de diferentes proprietários.
+- Uma propriedade tem apenas um proprietário e pode ser alugada por apenas um locatário de cada vez.
+- Cada propriedade é gerida por apenas um agente imobiliário.

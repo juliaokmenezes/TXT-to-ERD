@@ -1,0 +1,44 @@
+Claro, vou reescrever os requisitos para o diagrama entidade-relacionamento, seguindo o exemplo de especificação que você forneceu, com foco em clareza e precisão:
+
+**Gerenciamento de Propriedades Alugadas**
+
+1. **Cadastro de Agentes Imobiliários**
+   1.1. Um agente imobiliário pode gerenciar várias propriedades.
+   1.2. Cada propriedade é gerenciada por um único agente imobiliário.
+
+2. **Cadastro de Proprietários de Imóveis**
+   2.1. Um proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar vinculada a um único proprietário.
+
+3. **Cadastro de Locatários**
+   3.1. Um locatário pode alugar várias propriedades ao longo do tempo, mas apenas uma de cada vez.
+   3.2. Um locatário pode não ter alugado nenhuma propriedade.
+
+4. **Gestão de Propriedades**
+   4.1. Cada propriedade pode ser alugada por apenas um locatário de cada vez.
+   4.2. Deve ser possível registrar um histórico de preços de aluguel para cada propriedade.
+
+5. **Registro de Pagamentos**
+   5.1. Os pagamentos devem ser registrados mensalmente e pagos integralmente.
+   5.2. Devem ser incluídas informações sobre as contas de pagamento e recebimento.
+   5.3. O método de pagamento pode ser `Boleto`, `PIX`, `Cartão de Crédito` ou `Transferência Bancária`.
+   5.4. Deve ser indicado o mês para o qual o pagamento foi feito.
+
+6. **Contratos de Locação**
+   6.1. Cada contrato deve incluir uma data de início e término.
+   6.2. Deve haver um campo para cláusulas contratuais.
+   6.3. Ao final do contrato, deve ser indicado se o depósito de segurança foi reembolsado integralmente.
+   6.4. Se o valor do contrato exceder 50% do salário declarado do locatário, um fiador deve assinar o contrato.
+   6.5. Um fiador pode assinar mais de um contrato.
+
+7. **Manutenção de Propriedades**
+   7.1. Antes de alugar uma propriedade, deve-se verificar a última data de manutenção realizada.
+   7.2. Se o tempo entre a última manutenção e o início do novo contrato exceder 9 meses, isso deve ser registrado.
+
+8. **Sistema de Usuários**
+   8.1. Um agente imobiliário deve ter uma conta de usuário com login e senha para visualizar contratos.
+   8.2. O administrador tem permissões para ler, editar e excluir contratos.
+   8.3. O gerente tem permissões para editar e visualizar contratos.
+   8.4. O usuário padrão pode apenas visualizar contratos.
+
+Espero que esta reformulação atenda às suas expectativas de clareza e precisão.

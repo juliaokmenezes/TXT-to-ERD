@@ -1,6 +1,6 @@
 
 from model import create_model
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 import json
 import re
 import os
@@ -145,6 +145,7 @@ Your response **must** strictly follow this JSON structure:
     - Obeserve that in a relation, Table:PrimaryKey there is no space between, you MUST obey this rule DO NOT make the relation like this: [Table: PrimaryKey]
     - rankAdjustments is always an empty list []. "
     - label contains a meaningful title."
+    - The output must be in language present on example. If the txt is in english, the output is in english, but if the input is in portuguese, the output MUST be in portuguese
     "Output only the JSON—no additional text, explanations, or comments."
 """
 

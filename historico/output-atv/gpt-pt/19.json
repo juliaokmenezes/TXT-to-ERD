@@ -1,0 +1,73 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(100)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(100)"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(100)",
+      "salario_declarado": "decimal(10,2)"
+    },
+    "Fiador": {
+      "*id_fiador": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(100)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_proprietario": "int()",
+      "+id_agente": "int()",
+      "endereco": "varchar(200) NOT NULL",
+      "ultima_manutencao": "date()"
+    },
+    "ContratoLocacao": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_locatario": "int()",
+      "+id_propriedade": "int()",
+      "+id_fiador": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_termino": "date() NOT NULL",
+      "clausulas": "text()",
+      "deposito_reembolsado": "boolean()"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "mes_referente": "varchar(20) NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "conta_pagamento": "varchar(100)",
+      "conta_recebimento": "varchar(100)"
+    },
+    "Indicacao": {
+      "*id_indicacao": "int() NOT NULL",
+      "+id_agente_indicador": "int()",
+      "+id_agente_indicado": "int()",
+      "data_indicacao": "date()",
+      "valor_comissao": "decimal(10,2)"
+    }
+  },
+  "relations": [
+    "Propriedade:id_proprietario 1--* Proprietario:id_proprietario",
+    "Propriedade:id_agente 1--* AgenteImobiliario:id_agente",
+    "ContratoLocacao:id_locatario 1--* Locatario:id_locatario",
+    "ContratoLocacao:id_propriedade 1--1 Propriedade:id_propriedade",
+    "ContratoLocacao:id_fiador ?--* Fiador:id_fiador",
+    "Pagamento:id_contrato 1--1 ContratoLocacao:id_contrato",
+    "Indicacao:id_agente_indicador 1--* AgenteImobiliario:id_agente",
+    "Indicacao:id_agente_indicado 1--* AgenteImobiliario:id_agente"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o de Propriedades Alugadas"
+}

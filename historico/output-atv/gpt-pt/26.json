@@ -1,0 +1,64 @@
+{
+  "tables": {
+    "Agente": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "login": "varchar(100) NOT NULL",
+      "senha": "varchar(100) NOT NULL"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_proprietario": "int()",
+      "+id_agente": "int()",
+      "endereco": "varchar(200) NOT NULL",
+      "ultima_manutencao": "date()"
+    },
+    "Contrato": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_propriedade": "int()",
+      "+id_locatario": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_termino": "date()",
+      "clausulas": "text()",
+      "deposito_reembolsado": "boolean()"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "metodo": "varchar(50) NOT NULL",
+      "mes_referente": "varchar(20) NOT NULL",
+      "valor": "decimal(10,2) NOT NULL"
+    },
+    "Avaliacao": {
+      "*id_avaliacao": "int() NOT NULL",
+      "+id_avaliador": "int()",
+      "+id_avaliado": "int()",
+      "nota": "int() NOT NULL",
+      "tipo_avaliador": "varchar(50) NOT NULL",
+      "tipo_avaliado": "varchar(50) NOT NULL"
+    }
+  },
+  "relations": [
+    "Propriedade:id_proprietario 1--* Proprietario:id_proprietario",
+    "Propriedade:id_agente 1--* Agente:id_agente",
+    "Contrato:id_propriedade 1--1 Propriedade:id_propriedade",
+    "Contrato:id_locatario 1--1 Locatario:id_locatario",
+    "Pagamento:id_contrato 1--1 Contrato:id_contrato",
+    "Avaliacao:id_avaliador *--1 Agente:id_agente",
+    "Avaliacao:id_avaliador *--1 Proprietario:id_proprietario",
+    "Avaliacao:id_avaliador *--1 Locatario:id_locatario",
+    "Avaliacao:id_avaliado *--1 Agente:id_agente",
+    "Avaliacao:id_avaliado *--1 Proprietario:id_proprietario",
+    "Avaliacao:id_avaliado *--1 Locatario:id_locatario"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}

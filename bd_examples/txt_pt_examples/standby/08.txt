@@ -1,0 +1,23 @@
+Claro, aqui está a versão revisada dos requisitos para o diagrama entidade-relacionamento, com frases mais claras e diretas:
+
+1. Cadastro de Agentes Imobiliários
+   1.1. Um agente imobiliário pode gerenciar várias propriedades, pertencentes a diferentes proprietários.
+   1.2. Cada propriedade deve ser gerenciada por um único agente imobiliário.
+
+2. Cadastro de Proprietários de Imóveis
+   2.1. Um proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar vinculada a um único proprietário.
+
+3. Cadastro de Locatários
+   3.1. Um locatário pode alugar várias propriedades ao longo do tempo, mas apenas uma de cada vez.
+
+4. Cadastro de Propriedades
+   4.1. Cada propriedade pode ser alugada por apenas um locatário de cada vez.
+
+5. Gestão de Pagamentos
+   5.1. Deve ser possível registrar pagamentos mensais, que devem ser pagos integralmente.
+   5.2. Os registros de pagamento devem incluir informações sobre as contas de pagamento e recebimento, além do mês referente ao pagamento.
+   5.3. A agência é responsável por receber os pagamentos e repassá-los ao proprietário do imóvel.
+   5.4. Além do aluguel, a agência cobra uma porcentagem variável a cada mês, dependendo da inflação. O banco de dados deve armazenar o valor monetário pago referente a essa porcentagem para a agência.
+
+Espero que essas revisões ajudem a tornar os requisitos mais claros e diretos para a criação do diagrama entidade-relacionamento.

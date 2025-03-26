@@ -1,0 +1,23 @@
+Claro, vou reformular os requisitos para torná-los mais claros e consistentes, seguindo o exemplo de especificação fornecido:
+
+1. Cadastro de Agentes Imobiliários
+   1.1. Um agente imobiliário pode gerenciar várias propriedades.
+   1.2. Cada propriedade deve ser gerenciada por um único agente imobiliário.
+
+2. Cadastro de Proprietários de Imóveis
+   2.1. Um proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar vinculada a um único proprietário.
+
+3. Cadastro de Locatários
+   3.1. Um locatário pode alugar várias propriedades ao longo do tempo, mas apenas uma de cada vez.
+
+4. Locação de Propriedades
+   4.1. Uma propriedade pode ser alugada por no máximo um locatário por vez.
+
+5. Gestão de Pagamentos
+   5.1. Deve ser possível registrar pagamentos mensais, que devem ser pagos integralmente.
+   5.2. Os registros de pagamento devem incluir informações sobre as contas de pagamento e recebimento, bem como o mês referente ao pagamento.
+   5.3. A agência é responsável por receber os pagamentos e repassá-los ao proprietário do imóvel.
+   5.4. O banco de dados deve sinalizar quando o dinheiro foi repassado ao proprietário.
+
+Essas reformulações visam eliminar ambiguidades e tornar os requisitos mais diretos e fáceis de entender.

@@ -1,0 +1,37 @@
+{
+  "tables": {
+    "RealEstateAgent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "PropertyOwner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "+renter_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "rent_price": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 RealEstateAgent:agent_id",
+    "Property:owner_id *--1 PropertyOwner:owner_id",
+    "Property:renter_id ?--1 Renter:renter_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Management System"
+}

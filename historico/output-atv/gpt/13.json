@@ -1,0 +1,53 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "contact_info": "varchar(200)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "contact_info": "varchar(200)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "contact_info": "varchar(200)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "+renter_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "utensils": "text"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "payment_account": "varchar(100)",
+      "receiving_account": "varchar(100)",
+      "payment_month": "varchar(20) NOT NULL"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "clauses": "text",
+      "security_deposit_refunded": "boolean NOT NULL"
+    }
+  },
+  "relations": [
+    "Property:agent_id *--1 Agent:agent_id",
+    "Property:owner_id *--1 Owner:owner_id",
+    "Property:renter_id ?--1 Renter:renter_id",
+    "Payment:property_id *--1 Property:property_id",
+    "RentalAgreement:property_id 1--1 Property:property_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Management System"
+}

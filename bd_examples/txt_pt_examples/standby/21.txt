@@ -1,0 +1,28 @@
+Claro, vou reformular os requisitos para torná-los mais claros e consistentes, seguindo o exemplo de especificação que você forneceu:
+
+1. Cadastro de Agentes Imobiliários
+   1.1. Cada agente imobiliário pode gerenciar várias propriedades.
+   1.2. Cada propriedade deve ser gerenciada por um único agente imobiliário.
+
+2. Cadastro de Proprietários de Imóveis
+   2.1. Cada proprietário pode possuir várias propriedades.
+   2.2. Cada propriedade deve estar vinculada a um único proprietário.
+
+3. Cadastro de Locatários
+   3.1. Um locatário pode alugar várias propriedades ao longo do tempo, mas apenas uma de cada vez.
+   3.2. Se a propriedade for um espaço de co-living, cada locatário deve ter um contrato separado e pagar o aluguel individualmente.
+
+4. Cadastro de Propriedades
+   4.1. Cada propriedade deve ter um campo informando o tipo: casa, apartamento, vila ou espaço de co-living.
+   4.2. Uma propriedade pode ser alugada por apenas um locatário de cada vez.
+
+5. Gestão de Pagamentos
+   5.1. Os pagamentos devem ser registrados mensalmente e pagos integralmente.
+   5.2. Cada pagamento deve incluir informações sobre as contas de pagamento e recebimento, além do mês referente ao pagamento.
+
+6. Contratos de Aluguel
+   6.1. Cada contrato de aluguel deve incluir uma data de início e término.
+   6.2. Deve haver um campo para cláusulas contratuais.
+   6.3. No final do contrato, deve ser indicado se o depósito de segurança foi reembolsado ou não, sendo o reembolso apenas integral.
+
+Espero que esta reformulação atenda às suas expectativas, tornando os requisitos mais claros e organizados.

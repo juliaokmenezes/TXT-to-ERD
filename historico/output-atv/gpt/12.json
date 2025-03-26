@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "first_name": "varchar(100)",
+      "last_name": "varchar(100)",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "city": "varchar(100)",
+      "state": "varchar(100)",
+      "zip_code": "varchar(20)"
+    },
+    "RentalAgreement": {
+      "*agreement_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "start_date": "date()",
+      "end_date": "date()",
+      "clauses": "text()",
+      "security_deposit_refunded": "boolean()",
+      "rent_payment_date": "date()",
+      "late_fee_amount": "decimal(10,2)"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+agreement_id": "int()",
+      "payment_date": "date()",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_account": "varchar(100)",
+      "receiving_account": "varchar(100)",
+      "payment_month": "varchar(20)"
+    }
+  },
+  "relations": [
+    "Property:owner_id *--1 Owner:owner_id",
+    "Property:agent_id *--1 Agent:agent_id",
+    "RentalAgreement:property_id 1--1 Property:property_id",
+    "RentalAgreement:renter_id 1--1 Renter:renter_id",
+    "Payment:agreement_id *--1 RentalAgreement:agreement_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Agency Management System"
+}

@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_agente": "int()",
+      "+id_proprietario": "int()",
+      "+id_locatario": "int()",
+      "endereco": "varchar(200) NOT NULL",
+      "valor_aluguel": "decimal(10,2) NOT NULL"
+    },
+    "ContratoLocacao": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_propriedade": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_termino": "date() NOT NULL",
+      "clausulas": "text()",
+      "deposito_reembolsado": "boolean()"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "mes_referente": "varchar(20) NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "metodo_pagamento": "varchar(50) NOT NULL"
+    },
+    "Manutencao": {
+      "*id_manutencao": "int() NOT NULL",
+      "+id_propriedade": "int()",
+      "data": "date() NOT NULL",
+      "descricao": "text() NOT NULL",
+      "custo": "decimal(10,2) NOT NULL",
+      "empreiteiro": "varchar(100)"
+    }
+  },
+  "relations": [
+    "Propriedade:id_agente 1--* AgenteImobiliario:id_agente",
+    "Propriedade:id_proprietario 1--* Proprietario:id_proprietario",
+    "Propriedade:id_locatario ?--1 Locatario:id_locatario",
+    "ContratoLocacao:id_propriedade 1--1 Propriedade:id_propriedade",
+    "Pagamento:id_contrato 1--1 ContratoLocacao:id_contrato",
+    "Manutencao:id_propriedade 1--* Propriedade:id_propriedade"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}

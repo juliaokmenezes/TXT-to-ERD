@@ -1,0 +1,44 @@
+{
+  "tables": {
+    "Agente": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Locatario": {
+      "*id_locatario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "telefone": "varchar(15)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_agente": "int()",
+      "+id_proprietario": "int()",
+      "+id_locatario": "int()",
+      "endereco": "varchar(200) NOT NULL",
+      "valor_aluguel": "decimal(10,2) NOT NULL"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_propriedade": "int()",
+      "mes_referencia": "date() NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "conta_pagamento": "varchar(100)",
+      "conta_recebimento": "varchar(100)",
+      "repasse_efetuado": "boolean() NOT NULL"
+    }
+  },
+  "relations": [
+    "Propriedade:id_agente 1--* Agente:id_agente",
+    "Propriedade:id_proprietario 1--* Proprietario:id_proprietario",
+    "Propriedade:id_locatario ?--1 Locatario:id_locatario",
+    "Pagamento:id_propriedade 1--* Propriedade:id_propriedade"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}
