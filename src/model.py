@@ -2,8 +2,6 @@ from langchain_openai import ChatOpenAI
 import os
 
 
-OPENAI_API_KEY="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"
-
 
 # Configuração do modelo
 def create_model():
