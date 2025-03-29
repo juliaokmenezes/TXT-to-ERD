@@ -5,7 +5,7 @@ import subprocess
 pasta_entrada = '/home/julia/TXT-to-ERD/avaliacao/json-oraculo/dot'
 
 # Diretório de saída (onde os arquivos .png serão salvos)
-pasta_saida = '/home/julia/TXT-to-ERD/avaliacao/oraculo'
+pasta_saida = '/home/julia/TXT-to-ERD/avaliacao/json-oraculo/'
 
 # Criar a pasta de saída caso não exista
 os.makedirs(pasta_saida, exist_ok=True)

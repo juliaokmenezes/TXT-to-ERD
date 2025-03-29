@@ -1,0 +1,146 @@
+/* created with ERDot < https://github.com/ehne/ERDot > */
+digraph G {
+    graph [
+        nodesep=0.5;
+        rankdir="LR";
+        concentrate=true;
+        splines="spline";
+        fontname="Helvetica";
+        pad="0.2,0.2",
+        label="18",
+        
+    ];
+    
+    node [shape=plain, fontname="Helvetica"];
+    edge [
+        dir=both,
+        fontsize=12,
+        arrowsize=0.9,
+        penwidth=1.0,
+        labelangle=32,
+        labeldistance=1.8,
+        fontname="Helvetica"
+    ];
+    
+    "CorretorImoveis" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>CorretorImoveis</i></td></tr>
+        <tr><td port="id_corretorImoveis" align="left" cellpadding="5">PK id_corretorImoveis <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="nome" align="left" cellpadding="5">nome <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="numeroTelefone" align="left" cellpadding="5">numeroTelefone <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Proprietario" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Proprietario</i></td></tr>
+        <tr><td port="id_proprietario" align="left" cellpadding="5">PK id_proprietario <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="nome" align="left" cellpadding="5">nome <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="numeroTelefone" align="left" cellpadding="5">numeroTelefone <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Inquilino" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Inquilino</i></td></tr>
+        <tr><td port="id_inquilino" align="left" cellpadding="5">PK id_inquilino <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="nome" align="left" cellpadding="5">nome <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="numeroTelefone" align="left" cellpadding="5">numeroTelefone <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="salario" align="left" cellpadding="5">salario <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+    </table>>];
+    "Imovel" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Imovel</i></td></tr>
+        <tr><td port="id_imovel" align="left" cellpadding="5">PK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="endereco" align="left" cellpadding="5">endereco <font color="grey60">varchar(200) NOT NULL</font></td></tr>
+        <tr><td port="valorAluguel" align="left" cellpadding="5">valorAluguel <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="id_proprietario" align="left" cellpadding="5">FK id_proprietario <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_corretorImoveis" align="left" cellpadding="5">FK id_corretorImoveis <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="disponivelParaAluguel" align="left" cellpadding="5">disponivelParaAluguel <font color="grey60">boolean() NOT NULL</font></td></tr>
+    </table>>];
+    "Locacoes" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Locacoes</i></td></tr>
+        <tr><td port="id_locacao" align="left" cellpadding="5">PK id_locacao <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_imovel" align="left" cellpadding="5">FK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_inquilino" align="left" cellpadding="5">FK id_inquilino <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="dataInicioLocacao" align="left" cellpadding="5">dataInicioLocacao <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="dataFinalLocacao" align="left" cellpadding="5">dataFinalLocacao <font color="grey60">date()</font></td></tr>
+        <tr><td port="valorDeposito" align="left" cellpadding="5">valorDeposito <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+    </table>>];
+    "Pagamentos" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Pagamentos</i></td></tr>
+        <tr><td port="id_pagamento" align="left" cellpadding="5">PK id_pagamento <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_locacao" align="left" cellpadding="5">FK id_locacao <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="valorAluguel" align="left" cellpadding="5">valorAluguel <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
+        <tr><td port="contaPagamento" align="left" cellpadding="5">contaPagamento <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+        <tr><td port="contaRecebimento" align="left" cellpadding="5">contaRecebimento <font color="grey60">varchar(50) NOT NULL</font></td></tr>
+        <tr><td port="dataPagamento" align="left" cellpadding="5">dataPagamento <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="metodoPagamento" align="left" cellpadding="5">metodoPagamento <font color="grey60">enum(&#039;Boleto&#039;, &#039;PIX&#039;, &#039;Cartão de Crédito&#039;, &#039;Transferência Bancária&#039;) NOT NULL</font></td></tr>
+    </table>>];
+    "Manutencao" [ label=<
+        <table border="0" cellborder="1" cellspacing="0" >
+        <tr><td><i>Manutencao</i></td></tr>
+        <tr><td port="id_manutencao" align="left" cellpadding="5">PK id_manutencao <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_imovel" align="left" cellpadding="5">FK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_inquilino" align="left" cellpadding="5">FK id_inquilino <font color="grey60">int()</font></td></tr>
+        <tr><td port="dataManutencao" align="left" cellpadding="5">dataManutencao <font color="grey60">date() NOT NULL</font></td></tr>
+        <tr><td port="descricao" align="left" cellpadding="5">descricao <font color="grey60">text() NOT NULL</font></td></tr>
+        <tr><td port="custo" align="left" cellpadding="5">custo <font color="grey60">decimal(10,2)</font></td></tr>
+        <tr><td port="contratante" align="left" cellpadding="5">contratante <font color="grey60">varchar(100)</font></td></tr>
+    </table>>];
+
+    
+    "Imovel":"id_corretorImoveis"->"CorretorImoveis":"id_corretorImoveis" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Imovel":"id_proprietario"->"Proprietario":"id_proprietario" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Imovel":"id_imovel"->"Locacoes":"id_imovel" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Inquilino":"id_inquilino"->"Locacoes":"id_inquilino" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Locacoes":"id_locacao"->"Pagamentos":"id_locacao" [
+        arrowhead=noneotee,
+
+        arrowtail=ocrow,
+    ];
+
+    
+    "Manutencao":"id_imovel"->"Imovel":"id_imovel" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+    
+    "Manutencao":"id_inquilino"->"Inquilino":"id_inquilino" [
+        arrowhead=ocrow,
+
+        arrowtail=noneotee,
+    ];
+
+
+
+    
+
+}
