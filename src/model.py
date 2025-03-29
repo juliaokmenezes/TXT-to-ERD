@@ -1,8 +1,9 @@
 from langchain_groq import ChatGroq
 import os
 
-MODEL_API_KEY='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'
-model = "qwen-2.5-32b"
+
+
+# Configuração do modelo
 def create_model():
     result = ChatGroq(
         model_name=model,
