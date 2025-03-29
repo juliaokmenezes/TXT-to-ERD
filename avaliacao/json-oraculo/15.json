@@ -1,0 +1,89 @@
+{
+    "tabelas": {
+        "CorretorImoveis": {
+            "*id_corretor": "int() NOT NULL",
+            "nome": "varchar(100) NOT NULL",
+            "numeroTelefone": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Proprietario": {
+            "*id_proprietario": "int() NOT NULL",
+            "nome": "varchar(100) NOT NULL",
+            "numeroTelefone": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Inquilino": {
+            "*id_inquilino": "int() NOT NULL",
+            "nome": "varchar(100) NOT NULL",
+            "numeroTelefone": "char(20) NOT NULL",
+            "salario": "decimal(10,2) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Imovel": {
+            "*id_imovel": "int() NOT NULL",
+            "endereco": "varchar(200) NOT NULL",
+            "valorAluguel": "decimal(10,2) NOT NULL",
+            "+id_proprietario": "int() NOT NULL",
+            "+id_corretor": "int() NOT NULL",
+            "disponivelParaAluguel": "boolean() NOT NULL"
+        },
+        "Locacoes": {
+            "*id_locacao": "int() NOT NULL",
+            "+id_imovel": "int() NOT NULL",
+            "+id_inquilino": "int() NOT NULL",
+            "+id_inspecao": "int() NOT NULL",
+            "dataInicioLocacao": "date() NOT NULL",
+            "dataFinalLocacao": "date()",
+            "valorDeposito": "decimal(10,2) NOT NULL"
+        },
+        "Pagamentos": {
+            "*id_pagamento": "int() NOT NULL",
+            "+id_locacao": "int() NOT NULL",
+            "valorAluguel": "decimal(10,2) NOT NULL",
+            "contaPagamento": "varchar(50) NOT NULL",
+            "contaRecebimento": "varchar(50) NOT NULL",
+            "dataPagamento": "date() NOT NULL",
+            "metodoPagamento": "enum('Boleto', 'PIX', 'Cartão de Crédito', 'Transferência Bancária') NOT NULL"
+        },
+        "Fiador": {
+            "*id_fiador": "int() NOT NULL",
+            "+id_locacao": "int() NOT NULL"
+        },
+        "Manutencao": {
+            "*id_manutencao": "int() NOT NULL",
+            "+id_imovel": "int() NOT NULL",
+            "ultimaDataManutencao": "date() NOT NULL",
+            "descricao": "text()"
+        },
+        "Inspecoes": {
+            "*id_inspecao": "int() NOT NULL",
+            "+id_imovel": "int() NOT NULL",
+            "dataInspecao": "date() NOT NULL",
+            "relatorioDanos": "text()",
+            "reparosNecessarios": "boolean() NOT NULL"
+        },
+        "IndicacoesCorretor": {
+            "*id_indicacao": "int() NOT NULL",
+            "+id_corretorIndicante": "int() NOT NULL",
+            "+id_corretorIndicado": "int() NOT NULL",
+            "dataIndicacao": "date() NOT NULL",
+            "comissaoRecebida": "decimal(10,2)"
+        }
+    },
+
+    "relacoes": [
+        "Imovel:id_corretor 1--* CorretorImoveis:id_corretor",
+        "Imovel:id_proprietario 1--* Proprietario:id_proprietario",
+        "Imovel:id_imovel *--1 Locacoes:id_imovel",
+        "Inquilino:id_inquilino *--1 Locacoes:id_inquilino",
+        "Locacoes:id_locacao *--1 Pagamentos:id_locacao",
+        "Locacoes:id_locacao 1--* Fiador:id_locacao",
+        "Manutencao:id_imovel 1--* Imovel:id_imovel",
+        "Inspecoes:id_imovel 1--* Imovel:id_imovel",
+        "Locacoes:id_inspecao 1--1 Inspecoes:id_inspecao",
+        "IndicacoesCorretor:id_corretorIndicante 1--* CorretorImoveis:id_corretor",
+        "IndicacoesCorretor:id_corretorIndicado 1--* CorretorImoveis:id_corretor"
+    ],
+    "ajustesHierarquicos": "",
+    "rotulo": "15"
+}
