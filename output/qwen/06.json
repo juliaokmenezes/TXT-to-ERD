@@ -1,0 +1,53 @@
+{
+  "tables": {
+    "ImobiliariaAgent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "description": "text()",
+      "rent_value": "decimal(10,2) NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int() NOT NULL",
+      "appliances": "text()"
+    },
+    "LeaseContract": {
+      "*contract_id": "int() NOT NULL",
+      "+property_id": "int() NOT NULL",
+      "+tenant_id": "int() NOT NULL",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int() NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "ImobiliariaAgent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Tenant:tenant_id 1--* LeaseContract:tenant_id",
+    "Property:property_id 1--* LeaseContract:property_id",
+    "LeaseContract:contract_id 1--* Payment:contract_id"
+  ],
+  "rankAdjustments": [],
+  "label": "Imobiliaria Management System"
+}

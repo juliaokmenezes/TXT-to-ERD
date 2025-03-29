@@ -1,0 +1,46 @@
+{
+  "tables": {
+    "ImobiliariaAgente": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "telefone": "varchar(20)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "telefone": "varchar(20)"
+    },
+    "Inquilino": {
+      "*id_inquilino": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "telefone": "varchar(20)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "endereco": "varchar(200) NOT NULL",
+      "tipo": "varchar(50) NOT NULL",
+      "preco": "decimal(10,2) NOT NULL",
+      "+id_proprietario": "int()",
+      "+id_agente": "int()"
+    },
+    "ContratoAluguel": {
+      "*id_contrato": "int() NOT NULL",
+      "data_inicio": "date() NOT NULL",
+      "data_fim": "date() NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "+id_inquilino": "int()",
+      "+id_propriedade": "int()"
+    }
+  },
+  "relations": [
+    "ImobiliariaAgente:id_agente 1--* Propriedade:id_agente",
+    "Proprietario:id_proprietario 1--* Propriedade:id_proprietario",
+    "Inquilino:id_inquilino 1--* ContratoAluguel:id_inquilino",
+    "Propriedade:id_propriedade 1--* ContratoAluguel:id_propriedade"
+  ],
+  "rankAdjustments": [],
+  "label": "Gest\u00e3o Imobili\u00e1ria"
+}

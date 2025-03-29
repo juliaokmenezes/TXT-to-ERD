@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "type": "varchar(50)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "RentalContract": {
+      "*contract_id": "int() NOT NULL",
+      "+tenant_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date()",
+      "rent": "decimal(10,2) NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_method": "varchar(50) NOT NULL",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    },
+    "Maintenance": {
+      "*maintenance_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "date": "date() NOT NULL",
+      "description": "varchar(200)"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Tenant:tenant_id 1--* RentalContract:tenant_id",
+    "Property:property_id 1--* RentalContract:property_id",
+    "RentalContract:contract_id 1--* Payment:contract_id",
+    "Property:property_id 1--* Maintenance:maintenance_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Management System"
+}

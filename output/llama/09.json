@@ -1,0 +1,68 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "type": "varchar(50) NOT NULL"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "RentalContract": {
+      "*contract_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+tenant_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date()",
+      "rent": "decimal(10,2) NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "ContractGuarantor": {
+      "*contract_guarantor_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "+guarantor_id": "int()"
+    },
+    "Maintenance": {
+      "*maintenance_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "date": "date() NOT NULL",
+      "description": "varchar(200) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Property:property_id 1--* RentalContract:property_id",
+    "Tenant:tenant_id 1--* RentalContract:tenant_id",
+    "RentalContract:contract_id 1--* Payment:contract_id",
+    "Guarantor:guarantor_id 1--* ContractGuarantor:guarantor_id",
+    "RentalContract:contract_id 1--* ContractGuarantor:contract_id",
+    "Property:property_id 1--* Maintenance:property_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Management System"
+}

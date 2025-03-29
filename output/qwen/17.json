@@ -1,0 +1,85 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "price": "decimal(10,2) NOT NULL",
+      "status": "varchar(50) NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()"
+    },
+    "LeaseContract": {
+      "*contract_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "+tenant_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "rent_amount": "decimal(10,2) NOT NULL"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payment_method": "varchar(50) NOT NULL"
+    },
+    "Maintenance": {
+      "*maintenance_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "maintenance_date": "date() NOT NULL",
+      "description": "text() NOT NULL"
+    },
+    "Review": {
+      "*review_id": "int() NOT NULL",
+      "rating": "int() NOT NULL",
+      "reviewer_type": "varchar(50) NOT NULL",
+      "reviewer_id": "int() NOT NULL",
+      "reviewed_type": "varchar(50) NOT NULL",
+      "reviewed_id": "int() NOT NULL",
+      "comment": "text()"
+    },
+    "Insurance": {
+      "*insurance_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "policy_number": "varchar(100) NOT NULL",
+      "coverage_amount": "decimal(10,2) NOT NULL",
+      "provider": "varchar(100) NOT NULL",
+      "valid_until": "date() NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Tenant:tenant_id 1--* LeaseContract:tenant_id",
+    "Property:property_id 1--* LeaseContract:property_id",
+    "LeaseContract:contract_id 1--* Payment:contract_id",
+    "Property:property_id 1--* Maintenance:property_id",
+    "Review:reviewer_id 1--* Agent:agent_id",
+    "Review:reviewer_id 1--* Owner:owner_id",
+    "Review:reviewer_id 1--* Tenant:tenant_id",
+    "Review:reviewed_id 1--* Agent:agent_id",
+    "Review:reviewed_id 1--* Owner:owner_id",
+    "Review:reviewed_id 1--* Tenant:tenant_id",
+    "LeaseContract:contract_id 1--* Insurance:contract_id"
+  ],
+  "rankAdjustments": [],
+  "label": "Imobili\u00e1ria Sistema de Gest\u00e3o"
+}

@@ -14,11 +14,7 @@ def translate_folder_to_portuguese(input_folder, output_folder):
 
     os.makedirs(output_folder, exist_ok=True)
 
-    text_files = sorted([f for f in os.listdir(input_folder) if f.endswith('.txt')])
-
-    if not text_files:
-        print("Nenhum arquivo .txt encontrado na pasta.")
-        return
+    text_files = sorted(f for f in os.listdir(input_folder))
 
     llm = create_model()
 
@@ -47,4 +43,4 @@ def translate_folder_to_portuguese(input_folder, output_folder):
         print(f"Arquivo '{file_name}' traduzido e salvo em '{output_folder}'.")
 
 # Exemplo de uso:
-translate_folder_to_portuguese('/home/julia/TXT-to-ERD/bd_examples/txt_examples', '/home/julia/TXT-to-ERD/bd_examples/txt_pt_examples')
+translate_folder_to_portuguese('/home/julia/TXT-to-ERD/avaliacao/json-oraculen', '/home/julia/TXT-to-ERD/avaliacao/json-oraculo')

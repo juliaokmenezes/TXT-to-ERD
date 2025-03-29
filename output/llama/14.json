@@ -1,0 +1,91 @@
+{
+  "tables": {
+    "AgenteImobiliar": {
+      "*agente_id": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "cpf": "varchar(11) NOT NULL",
+      "telefone": "varchar(11) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Proprietario": {
+      "*proprietario_id": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "cpf": "varchar(11) NOT NULL",
+      "telefone": "varchar(11) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Inquilino": {
+      "*inquilino_id": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "cpf": "varchar(11) NOT NULL",
+      "telefone": "varchar(11) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "Propriedade": {
+      "*propriedade_id": "int() NOT NULL",
+      "+proprietario_id": "int() NOT NULL",
+      "+agente_id": "int() NOT NULL",
+      "endereco": "varchar(200) NOT NULL",
+      "cidade": "varchar(100) NOT NULL",
+      "estado": "varchar(2) NOT NULL"
+    },
+    "Contrato": {
+      "*contrato_id": "int() NOT NULL",
+      "+propriedade_id": "int() NOT NULL",
+      "+inquilino_id": "int() NOT NULL",
+      "data_inicio": "date() NOT NULL",
+      "data_fim": "date() NOT NULL",
+      "valor_aluguel": "decimal(10,2) NOT NULL"
+    },
+    "Pagamento": {
+      "*pagamento_id": "int() NOT NULL",
+      "+contrato_id": "int() NOT NULL",
+      "data_pagamento": "date() NOT NULL",
+      "valor_pagamento": "decimal(10,2) NOT NULL"
+    },
+    "Fiador": {
+      "*fiador_id": "int() NOT NULL",
+      "nome": "varchar(100) NOT NULL",
+      "cpf": "varchar(11) NOT NULL",
+      "telefone": "varchar(11) NOT NULL",
+      "email": "varchar(100) NOT NULL"
+    },
+    "ContratoFiador": {
+      "*contrato_fiador_id": "int() NOT NULL",
+      "+contrato_id": "int() NOT NULL",
+      "+fiador_id": "int() NOT NULL"
+    },
+    "Manutencao": {
+      "*manutencao_id": "int() NOT NULL",
+      "+propriedade_id": "int() NOT NULL",
+      "data_manutencao": "date() NOT NULL"
+    },
+    "IndicacaoAgente": {
+      "*indicacao_id": "int() NOT NULL",
+      "+agente_id": "int() NOT NULL",
+      "data_indicacao": "date() NOT NULL",
+      "comissao": "decimal(10,2) NOT NULL"
+    },
+    "DanoMulta": {
+      "*dano_multa_id": "int() NOT NULL",
+      "+contrato_id": "int() NOT NULL",
+      "data_dano": "date() NOT NULL",
+      "motivo": "varchar(200) NOT NULL",
+      "evidencia": "varchar(200) NOT NULL"
+    }
+  },
+  "relations": [
+    "AgenteImobiliar:agente_id 1--* Propriedade:agente_id",
+    "Proprietario:proprietario_id 1--* Propriedade:proprietario_id",
+    "Inquilino:inquilino_id 1--* Contrato:inquilino_id",
+    "Propriedade:propriedade_id 1--* Contrato:propriedade_id",
+    "Contrato:contrato_id 1--* Pagamento:contrato_id",
+    "Fiador:fiador_id 1--* ContratoFiador:fiador_id",
+    "Contrato:contrato_id 1--* ContratoFiador:contrato_id",
+    "Propriedade:propriedade_id 1--* Manutencao:propriedade_id",
+    "AgenteImobiliar:agente_id 1--* IndicacaoAgente:agente_id",
+    "Contrato:contrato_id 1--* DanoMulta:contrato_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}

@@ -1,0 +1,76 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "email": "varchar(200)",
+      "telefone": "varchar(15)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "email": "varchar(200)",
+      "telefone": "varchar(15)"
+    },
+    "Inquilino": {
+      "*id_inquilino": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "email": "varchar(200)",
+      "telefone": "varchar(15)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_agente": "int()",
+      "+id_proprietario": "int()",
+      "endereco": "varchar(500) NOT NULL",
+      "valor_aluguel": "decimal(10,2) NOT NULL",
+      "ultima_manutencao": "date()"
+    },
+    "ContratoAluguel": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_inquilino": "int()",
+      "+id_propriedade": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_fim": "date()",
+      "valor_mensal": "decimal(10,2) NOT NULL"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "data_pagamento": "date() NOT NULL",
+      "valor": "decimal(10,2) NOT NULL",
+      "metodo_pagamento": "varchar(50) NOT NULL"
+    },
+    "Avaliacao": {
+      "*id_avaliacao": "int() NOT NULL",
+      "+id_avaliador": "int()",
+      "+id_avaliado": "int()",
+      "nota": "int() NOT NULL",
+      "comentario": "text"
+    },
+    "SeguroAluguel": {
+      "*id_seguro": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "numero_apolice": "varchar(100) NOT NULL",
+      "valor_cobertura": "decimal(10,2) NOT NULL",
+      "provedor_seguro": "varchar(200) NOT NULL",
+      "validade_apolice": "date() NOT NULL"
+    }
+  },
+  "relations": [
+    "AgenteImobiliario:id_agente 1--* Propriedade:id_agente",
+    "Proprietario:id_proprietario 1--* Propriedade:id_proprietario",
+    "Inquilino:id_inquilino 1--* ContratoAluguel:id_inquilino",
+    "Propriedade:id_propriedade 1--* ContratoAluguel:id_propriedade",
+    "ContratoAluguel:id_contrato 1--* Pagamento:id_contrato",
+    "ContratoAluguel:id_contrato 1--* SeguroAluguel:id_contrato",
+    "Avaliacao:id_avaliador 1--* AgenteImobiliario:id_agente",
+    "Avaliacao:id_avaliador 1--* Proprietario:id_proprietario",
+    "Avaliacao:id_avaliador 1--* Inquilino:id_inquilino",
+    "Avaliacao:id_avaliado 1--* AgenteImobiliario:id_agente",
+    "Avaliacao:id_avaliado 1--* Proprietario:id_proprietario",
+    "Avaliacao:id_avaliado 1--* Inquilino:id_inquilino"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}

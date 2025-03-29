@@ -19,18 +19,18 @@ example_output = """
             "*name": "varchar(100) NOT NULL",
             "height": "decimal(10,2)NOT NULL",
             "weight": "int()",
-            "birthDate": "date()NOT NULL",
-            "+birthPlaceID": "int()"
+            "birthDate": "date()NOT NULL"
         },
         "BirthPlace": {
             "*id_birthplace": "int() NOT NULL",
             "birthCity": "varchar(100)",
             "birthState": "varchar(100)",
-            "birthCountry": "varchar(100) NOT NULL"
+            "birthCountry": "varchar(100) NOT NULL",
+            "+personName": "varchar(100)"
         }
     },
     "relations": [
-        "Person:birthPlaceID *--1 BirthPlace:id_birthplace"
+        "BirthPlace:personName 1--* Person:name"
     ],
     "rankAdjustments": "",
     "label": ""
@@ -41,8 +41,7 @@ additional_example_input = """
     """
 
 additional_example_output = """
-    {
-  {
+{
   "tables": {
     "User": {
       "*username": "varchar(100) NOT NULL",
@@ -74,14 +73,14 @@ additional_example_output = """
     }
   },
   "relations": [
-    "Review:user_username *--1 User:username",
-    "Review:book_isbn *--1 Book:isbn",
-    "UserBook:user_username *--1 User:username",
-    "UserBook:book_isbn *--1 Book:isbn",
-    "UserBook:review_id *--1 Review:review_id"
+    "User:username 1--* Review:user_username",
+    "Book:isbn 1--* Review:book_isbn",
+    "User:username 1--* UserBook:user_username",
+    "Book:isbn 1--* UserBook:book_isbn",
+    "Review:review_id 1--* UserBook:review_id"
   ],
   "rankAdjustments": "",
-  "label": "Book Review Platform"
+  "label": "book platform"
 }
 """
 
@@ -164,6 +163,22 @@ def call(input_requirements):
     {additional_example_output}
 
     Now, analyze the following database carefully, extract the requirements, identify tables, keys, and columns and relationships. then generate the ER diagram. Finally, translate it into the required JSON format. 
+
+    You should think about:
+      What data needs to be stored in the database? (e.g., users, books, orders)
+      What has distinct attributes that need to be recorded?
+      What has an independent existence in the system? (e.g., a "User" can exist without an "Order," but an "Order Item" cannot exist without an "Order")
+      Is the data type appropriate? (e.g., "name" should be varchar, "price" should be decimal).
+      Are there constraints? (NOT NULL, UNIQUE, DEFAULT, etc.).
+      How would a relationship between tables work?
+
+    To correctly define relationships, follow this process:
+
+      Identify dependencies: Does an object depend on another to exist? (e.g., a "Comment" depends on a "User" and a "Post")
+      Determine cardinality: For each relationship, ask:
+      How many elements can be associated with another?
+      Can it be zero, one, or many?
+      Check if an intermediary table is needed: If there's a "many-to-many" (*--*) relationship, an intermediary entity is required (e.g., "User" and "Book" need "UserBook" to track reading progress).
 
     To solve this problem, follow these steps:
     1. Identify the main entities from the description

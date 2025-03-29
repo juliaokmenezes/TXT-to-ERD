@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-pasta = './bd_examples/json_examples'
+pasta = '/home/julia/TXT-to-ERD/avaliacao/json-oraculo'
 
 for arquivo in os.listdir(pasta):
     if os.path.isfile(os.path.join(pasta, arquivo)):

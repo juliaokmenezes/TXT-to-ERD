@@ -1,0 +1,80 @@
+{
+  "tables": {
+    "ImobiliariaAgent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)",
+      "verified_income": "decimal(10,2)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(255) NOT NULL",
+      "city": "varchar(100) NOT NULL",
+      "state": "varchar(100) NOT NULL",
+      "zip_code": "varchar(20) NOT NULL",
+      "+owner_id": "int()",
+      "+agent_id": "int()"
+    },
+    "LeaseContract": {
+      "*contract_id": "int() NOT NULL",
+      "+tenant_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "+surety_id": "int()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+contract_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL",
+      "payer": "varchar(100) NOT NULL",
+      "receiver": "varchar(100) NOT NULL"
+    },
+    "Maintenance": {
+      "*maintenance_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "maintenance_date": "date() NOT NULL",
+      "description": "text()"
+    },
+    "AgentReferral": {
+      "*referral_id": "int() NOT NULL",
+      "+referring_agent_id": "int()",
+      "+referred_agent_id": "int()",
+      "referral_date": "date() NOT NULL",
+      "commission": "decimal(10,2)"
+    },
+    "Surety": {
+      "*surety_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100)",
+      "phone": "varchar(20)"
+    }
+  },
+  "relations": [
+    "ImobiliariaAgent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Tenant:tenant_id 1--* LeaseContract:tenant_id",
+    "Property:property_id 1--* LeaseContract:property_id",
+    "LeaseContract:contract_id 1--* Payment:contract_id",
+    "Property:property_id 1--* Maintenance:property_id",
+    "ImobiliariaAgent:agent_id 1--* AgentReferral:referring_agent_id",
+    "ImobiliariaAgent:agent_id 1--* AgentReferral:referred_agent_id",
+    "Surety:surety_id 1--* LeaseContract:surety_id"
+  ],
+  "rankAdjustments": [],
+  "label": "Imobili\u00e1ria Gest\u00e3o"
+}

@@ -1,0 +1,55 @@
+{
+  "tables": {
+    "AgenteImobiliario": {
+      "*id_agente": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(200)"
+    },
+    "Proprietario": {
+      "*id_proprietario": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(200)"
+    },
+    "Inquilino": {
+      "*id_inquilino": "int() NOT NULL",
+      "nome": "varchar(200) NOT NULL",
+      "telefone": "varchar(15)",
+      "email": "varchar(200)"
+    },
+    "Propriedade": {
+      "*id_propriedade": "int() NOT NULL",
+      "+id_agente": "int()",
+      "+id_proprietario": "int()",
+      "endereco": "varchar(500) NOT NULL",
+      "valor_aluguel": "decimal(10,2) NOT NULL"
+    },
+    "Contrato": {
+      "*id_contrato": "int() NOT NULL",
+      "+id_inquilino": "int()",
+      "+id_propriedade": "int()",
+      "data_inicio": "date() NOT NULL",
+      "data_fim": "date()",
+      "data_pagamento": "date() NOT NULL",
+      "valor_multa": "decimal(10,2)"
+    },
+    "Pagamento": {
+      "*id_pagamento": "int() NOT NULL",
+      "+id_contrato": "int()",
+      "valor": "decimal(10,2) NOT NULL",
+      "data_pagamento": "date() NOT NULL",
+      "pagador": "varchar(200) NOT NULL",
+      "recebedor": "varchar(200) NOT NULL"
+    }
+  },
+  "relations": [
+    "AgenteImobiliario:id_agente 1--* Propriedade:id_agente",
+    "Proprietario:id_proprietario 1--* Propriedade:id_proprietario",
+    "Inquilino:id_inquilino 1--* Contrato:id_inquilino",
+    "Propriedade:id_propriedade 1--* Contrato:id_propriedade",
+    "Contrato:id_contrato 1--* Pagamento:id_contrato"
+  ],
+  "rankAdjustments": "",
+  "label": "Sistema de Gest\u00e3o Imobili\u00e1ria"
+}

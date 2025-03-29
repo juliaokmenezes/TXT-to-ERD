@@ -23,7 +23,6 @@ Este é um sistema de gestão imobiliária, nele é permitido o cadastro e geren
    5.1. Deve ser possível registrar pagamentos mensais, ou seja, o valor do aluguel referente àquele mês, que devem ser pagos integralmente.
    5.2. Cada pagamento deve registrar as contas envolvidas (pagador e recebedor), além do valor e da data do pagamento.
    
-
 6. Registro de Utensílios
    6.1. Deve ser possível registrar informações sobre os utensílios, como fogão, guarda roupa ou varal, já presentes na propriedade antes do aluguel.
    6.2. Este campo deve ser do tipo texto e é opcional, caso a propriedade possua utensílios.

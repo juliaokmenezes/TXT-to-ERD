@@ -23,5 +23,5 @@ Este é um sistema de gestão imobiliária, nele é permitido o cadastro e geren
    5.1. Deve ser possível registrar pagamentos mensais, ou seja, o valor do aluguel referente àquele mês, que devem ser pagos integralmente.
    5.2. Cada pagamento deve registrar as contas envolvidas (pagador e recebedor), além do valor e da data do pagamento.
    5.3. O contrato deve registrar a data na qual deve ser feito o pagamento do aluguel.
-   5.4. Deve ser possível registrar o valor da multa a ser aplicada em caso de atraso no pagamento do aluguel, proporcional aos dias de atraso.
+   5.4. Deve ser possível registrar o valor da multa a ser aplicada em caso de atraso no pagamento do aluguel.
 

@@ -1,16 +1,15 @@
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 import os
 
-
-OPENAI_API_KEY="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"
-
-
-# Configuração do modelo
+MODEL_API_KEY='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'
+model = "qwen-2.5-32b"
 def create_model():
-    model = ChatOpenAI(
-        model_name="gpt-4o",  
-        openai_api_key=OPENAI_API_KEY,
+    result = ChatGroq(
+        model_name=model,
+        groq_api_key=MODEL_API_KEY,
         temperature=0,
-        max_tokens=1000  
+        max_tokens=None,
+        request_timeout=35,
+        max_retries=3,
     )
-    return model
+    return result

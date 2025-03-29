@@ -1,0 +1,72 @@
+{
+    "tables": {
+        "RealEstateAgent": {
+            "*id_realEstate": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Owner": {
+            "*id_owner": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Renter": {
+            "*id_renter": "int() NOT NULL",
+            "name": "varchar(100) NOT NULL",
+            "phoneNumber": "char(20) NOT NULL",
+            "salario": "decimal(10,2) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+        },
+        "Property": {
+            "*id_property": "int() NOT NULL",
+            "address": "varchar(200) NOT NULL",
+            "rentValue": "decimal(10,2) NOT NULL",
+            "+id_owner": "int() NOT NULL",
+            "+id_realEstate": "int() NOT NULL",
+            "disponivelParaAluguel": "boolean() NOT NULL"
+        },
+        "Rents": {
+            "*id_rent": "int() NOT NULL",
+            "+id_property": "int() NOT NULL",
+            "+id_renter": "int() NOT NULL",
+            "+id_inspecao": "int() NOT NULL",
+            "rentInitialDate": "date() NOT NULL",
+            "rentFinalDate": "date()",
+            "estadoInicialPropriedade": "text()",
+            "depositAmount": "decimal(10,2) NOT NULL"
+        },
+        "Payments": {
+            "*id_payment": "int() NOT NULL",
+            "+id_rent": "int() NOT NULL",
+            "valorAluguel": "decimal(10,2) NOT NULL",
+            "paymentAccount": "varchar(50) NOT NULL",
+            "receivingAccount": "varchar(50) NOT NULL",
+            "paymentDate": "date() NOT NULL"
+        },
+        "fiador":{
+            "*id_fiador": "int() NOT NULL",
+            "+id_rent": "int() NOT NULL"
+        },
+        "inspecao":{
+            "+id_inspecao": "int() NOT NULL",
+            "+id_property": "int() NOT NULL",
+            "danos": "text()",
+            "reparoRealizado": "boolean() NOT NULL"
+        }
+    },
+
+    "relations": [
+        "Property:id_realEstate 1--* RealEstateAgent:id_realEstate",
+        "Property:id_owner 1--* Owner:id_owner",
+        "Property:id_property *--1 Rents:id_property",
+        "Renter:id_renter *--1 Rents:id_renter",
+        "Rents:id_rent *--1 Payments:id_rent",
+        "Rents:id_rent 1--* fiador:id_rent",
+        "inspecao:id_property 1--* Property:id_property",
+        "Rents:id_inspecao 1--1 inspecao:id_inspecao"
+    ],
+    "rankAdjustments": "",
+    "label": "10"
+}

@@ -1,0 +1,71 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "type": "varchar(50) NOT NULL"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Property_Owner": {
+      "*property_owner_id": "bigserial() NOT NULL",
+      "+property_id": "int()",
+      "+owner_id": "int()"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL",
+      "income": "decimal(10,2) NOT NULL"
+    },
+    "Rental_Contract": {
+      "*contract_id": "bigserial() NOT NULL",
+      "+property_id": "int()",
+      "+tenant_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "rent": "decimal(10,2) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20) NOT NULL"
+    },
+    "Guarantor_Contract": {
+      "*guarantor_contract_id": "bigserial() NOT NULL",
+      "+guarantor_id": "int()",
+      "+contract_id": "bigint()"
+    },
+    "Payment": {
+      "*payment_id": "bigserial() NOT NULL",
+      "+contract_id": "bigint()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Property:property_id 1--* Property_Owner:property_id",
+    "Owner:owner_id 1--* Property_Owner:owner_id",
+    "Property:property_id 1--* Rental_Contract:property_id",
+    "Tenant:tenant_id 1--* Rental_Contract:tenant_id",
+    "Guarantor:guarantor_id 1--* Guarantor_Contract:guarantor_id",
+    "Rental_Contract:contract_id 1--* Guarantor_Contract:contract_id",
+    "Rental_Contract:contract_id 1--* Payment:contract_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Management System"
+}

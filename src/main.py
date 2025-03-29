@@ -44,8 +44,8 @@ def pipeline(requirements_file, output_folder):
         return None
 
 if __name__ == "__main__":
-    requirements_folder = "/home/julia/TXT-to-ERD/bd_examples/txt_pt_examples"  
-    output_folder = "./output/output-atv/gpt-pt"  
+    requirements_folder = "/home/julia/TXT-to-ERD/bd_examples/txt_new_examples"  
+    output_folder = "./output/qwen"  
 
     files = sorted(os.listdir(requirements_folder))  
     

@@ -1,0 +1,70 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Tenant": {
+      "*tenant_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)",
+      "income": "decimal(10,2)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "address": "varchar(200) NOT NULL",
+      "description": "text()",
+      "+owner_id": "int()",
+      "+agent_id": "int()",
+      "status": "varchar(50)"
+    },
+    "Lease": {
+      "*lease_id": "int() NOT NULL",
+      "+tenant_id": "int()",
+      "+property_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date() NOT NULL",
+      "rent_amount": "decimal(10,2) NOT NULL",
+      "+surety_id": "int()"
+    },
+    "Payment": {
+      "*payment_id": "int() NOT NULL",
+      "+lease_id": "int()",
+      "payment_date": "date() NOT NULL",
+      "amount": "decimal(10,2) NOT NULL"
+    },
+    "Surety": {
+      "*surety_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "PropertyInspection": {
+      "*inspection_id": "int() NOT NULL",
+      "+property_id": "int()",
+      "inspection_date": "date() NOT NULL",
+      "damage_report": "text()",
+      "repair_status": "varchar(50)"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Tenant:tenant_id 1--* Lease:tenant_id",
+    "Property:property_id 1--* Lease:property_id",
+    "Lease:lease_id 1--* Payment:lease_id",
+    "Surety:surety_id 1--* Lease:surety_id",
+    "Property:property_id 1--* PropertyInspection:property_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Imobili\u00e1ria Gest\u00e3o"
+}

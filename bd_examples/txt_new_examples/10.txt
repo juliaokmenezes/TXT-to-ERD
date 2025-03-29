@@ -32,5 +32,5 @@ Este é um sistema de gestão imobiliária, nele é permitido o cadastro e geren
    7.1. Antes da assinatura do contrato, o agente imobiliário ou proprietário deve registrar no sistema se a propriedade sofreu danos pelo último locatário.
    7.2. Caso haja danos, os reparos devem ser realizados antes do proximo aluguel. 
    7.3. Até que os reparos sejam realizados, a propriedade deve indicar no sistema que está impossibilitada de ser alugada.
-   7.4. No primeiro contrato de aluguel, o proprietário ou agente imobiliário deve registrar o estado inicial da propriedade, incluindo eventuais danos e reparos realizados..
+   7.4. No primeiro contrato de aluguel, o proprietário ou agente imobiliário deve registrar o estado inicial da propriedade, incluindo eventuais danos e reparos realizados.
 

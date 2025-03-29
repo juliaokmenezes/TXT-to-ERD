@@ -1,0 +1,67 @@
+{
+  "tables": {
+    "Agent": {
+      "*agent_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Property": {
+      "*property_id": "int() NOT NULL",
+      "+agent_id": "int()",
+      "+owner_id": "int()",
+      "address": "varchar(200) NOT NULL",
+      "status": "varchar(30)"
+    },
+    "Owner": {
+      "*owner_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Renter": {
+      "*renter_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "RentalContract": {
+      "*contract_id": "bigserial() NOT NULL",
+      "+property_id": "int()",
+      "+renter_id": "int()",
+      "+guarantor_id": "int()",
+      "start_date": "date() NOT NULL",
+      "end_date": "date()",
+      "rent_value": "decimal(10,2) NOT NULL"
+    },
+    "Guarantor": {
+      "*guarantor_id": "int() NOT NULL",
+      "name": "varchar(100) NOT NULL",
+      "email": "varchar(100) NOT NULL",
+      "phone": "varchar(20)"
+    },
+    "Payment": {
+      "*payment_id": "bigserial() NOT NULL",
+      "+contract_id": "bigint()",
+      "payment_date": "date() NOT NULL",
+      "payment_value": "decimal(10,2) NOT NULL"
+    },
+    "PropertyInspection": {
+      "*inspection_id": "bigserial() NOT NULL",
+      "+property_id": "int()",
+      "inspection_date": "date() NOT NULL",
+      "damage_description": "text()"
+    }
+  },
+  "relations": [
+    "Agent:agent_id 1--* Property:agent_id",
+    "Owner:owner_id 1--* Property:owner_id",
+    "Renter:renter_id 1--* RentalContract:renter_id",
+    "Property:property_id 1--* RentalContract:property_id",
+    "Guarantor:guarantor_id 1--* RentalContract:guarantor_id",
+    "RentalContract:contract_id 1--* Payment:contract_id",
+    "Property:property_id 1--* PropertyInspection:property_id"
+  ],
+  "rankAdjustments": "",
+  "label": "Real Estate Management System"
+}
