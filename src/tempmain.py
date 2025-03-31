@@ -27,7 +27,7 @@ def process_existing_json(json_folder, output_folder):
         print(f"Error processing JSON files: {e}")
 
 if __name__ == "__main__":
-    json_folder = "/home/julia/TXT-to-ERD/avaliacao/json-oraculo"  # Pasta onde os JSON já existem
+    json_folder = "/home/julia/TXT-to-ERD/avaliacao/dot-json"  # Pasta onde os JSON já existem
     output_folder = "/home/julia/TXT-to-ERD/avaliacao/oraculo"  # Pasta para saída dos arquivos .dot e imagens
 
     process_existing_json(json_folder, output_folder)

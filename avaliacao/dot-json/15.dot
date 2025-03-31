@@ -79,12 +79,6 @@ digraph G {
         <tr><td port="dataPagamento" align="left" cellpadding="5">dataPagamento <font color="grey60">date() NOT NULL</font></td></tr>
         <tr><td port="metodoPagamento" align="left" cellpadding="5">metodoPagamento <font color="grey60">enum(&#039;Boleto&#039;, &#039;PIX&#039;, &#039;Cartão de Crédito&#039;, &#039;Transferência Bancária&#039;) NOT NULL</font></td></tr>
     </table>>];
-    "Fiador" [ label=<
-        <table border="0" cellborder="1" cellspacing="0" >
-        <tr><td><i>Fiador</i></td></tr>
-        <tr><td port="id_fiador" align="left" cellpadding="5">PK id_fiador <font color="grey60">int() NOT NULL</font></td></tr>
-        <tr><td port="id_locacao" align="left" cellpadding="5">FK id_locacao <font color="grey60">int() NOT NULL</font></td></tr>
-    </table>>];
     "Manutencao" [ label=<
         <table border="0" cellborder="1" cellspacing="0" >
         <tr><td><i>Manutencao</i></td></tr>
@@ -92,15 +86,6 @@ digraph G {
         <tr><td port="id_imovel" align="left" cellpadding="5">FK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
         <tr><td port="ultimaDataManutencao" align="left" cellpadding="5">ultimaDataManutencao <font color="grey60">date() NOT NULL</font></td></tr>
         <tr><td port="descricao" align="left" cellpadding="5">descricao <font color="grey60">text()</font></td></tr>
-    </table>>];
-    "Inspecoes" [ label=<
-        <table border="0" cellborder="1" cellspacing="0" >
-        <tr><td><i>Inspecoes</i></td></tr>
-        <tr><td port="id_inspecao" align="left" cellpadding="5">PK id_inspecao <font color="grey60">int() NOT NULL</font></td></tr>
-        <tr><td port="id_imovel" align="left" cellpadding="5">FK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
-        <tr><td port="dataInspecao" align="left" cellpadding="5">dataInspecao <font color="grey60">date() NOT NULL</font></td></tr>
-        <tr><td port="relatorioDanos" align="left" cellpadding="5">relatorioDanos <font color="grey60">text()</font></td></tr>
-        <tr><td port="reparosNecessarios" align="left" cellpadding="5">reparosNecessarios <font color="grey60">boolean() NOT NULL</font></td></tr>
     </table>>];
     "IndicacoesCorretor" [ label=<
         <table border="0" cellborder="1" cellspacing="0" >

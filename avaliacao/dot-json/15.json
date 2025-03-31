@@ -45,22 +45,11 @@
             "dataPagamento": "date() NOT NULL",
             "metodoPagamento": "enum('Boleto', 'PIX', 'Cartão de Crédito', 'Transferência Bancária') NOT NULL"
         },
-        "Fiador": {
-            "*id_fiador": "int() NOT NULL",
-            "+id_locacao": "int() NOT NULL"
-        },
         "Manutencao": {
             "*id_manutencao": "int() NOT NULL",
             "+id_imovel": "int() NOT NULL",
             "ultimaDataManutencao": "date() NOT NULL",
             "descricao": "text()"
-        },
-        "Inspecoes": {
-            "*id_inspecao": "int() NOT NULL",
-            "+id_imovel": "int() NOT NULL",
-            "dataInspecao": "date() NOT NULL",
-            "relatorioDanos": "text()",
-            "reparosNecessarios": "boolean() NOT NULL"
         },
         "IndicacoesCorretor": {
             "*id_indicacao": "int() NOT NULL",

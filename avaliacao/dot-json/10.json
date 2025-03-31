@@ -32,6 +32,7 @@
             "+id_imovel": "int() NOT NULL",
             "+id_inquilino": "int() NOT NULL",
             "+id_inspecao": "int() NOT NULL",
+            "+id_fiador": "int()",
             "dataInicioLocacao": "date() NOT NULL",
             "dataFimLocacao": "date()",
             "estadoInicialImovel": "text()",
@@ -47,7 +48,10 @@
         },
         "Fiador": {
             "*id_fiador": "int() NOT NULL",
-            "+id_locacao": "int() NOT NULL"
+            "nome": "varchar(100) NOT NULL",
+            "numeroTelefone": "char(20) NOT NULL",
+            "email": "varchar(50) NOT NULL"
+           
         },
         "Inspecao": {
             "+id_inspecao": "int() NOT NULL",

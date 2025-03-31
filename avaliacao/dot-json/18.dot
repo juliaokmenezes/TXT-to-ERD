@@ -55,7 +55,6 @@ digraph G {
         <tr><td port="valorAluguel" align="left" cellpadding="5">valorAluguel <font color="grey60">decimal(10,2) NOT NULL</font></td></tr>
         <tr><td port="id_proprietario" align="left" cellpadding="5">FK id_proprietario <font color="grey60">int() NOT NULL</font></td></tr>
         <tr><td port="id_corretorImoveis" align="left" cellpadding="5">FK id_corretorImoveis <font color="grey60">int() NOT NULL</font></td></tr>
-        <tr><td port="disponivelParaAluguel" align="left" cellpadding="5">disponivelParaAluguel <font color="grey60">boolean() NOT NULL</font></td></tr>
     </table>>];
     "Locacoes" [ label=<
         <table border="0" cellborder="1" cellspacing="0" >

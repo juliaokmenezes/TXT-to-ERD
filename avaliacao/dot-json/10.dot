@@ -64,6 +64,7 @@ digraph G {
         <tr><td port="id_imovel" align="left" cellpadding="5">FK id_imovel <font color="grey60">int() NOT NULL</font></td></tr>
         <tr><td port="id_inquilino" align="left" cellpadding="5">FK id_inquilino <font color="grey60">int() NOT NULL</font></td></tr>
         <tr><td port="id_inspecao" align="left" cellpadding="5">FK id_inspecao <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="id_fiador" align="left" cellpadding="5">FK id_fiador <font color="grey60">int()</font></td></tr>
         <tr><td port="dataInicioLocacao" align="left" cellpadding="5">dataInicioLocacao <font color="grey60">date() NOT NULL</font></td></tr>
         <tr><td port="dataFimLocacao" align="left" cellpadding="5">dataFimLocacao <font color="grey60">date()</font></td></tr>
         <tr><td port="estadoInicialImovel" align="left" cellpadding="5">estadoInicialImovel <font color="grey60">text()</font></td></tr>
@@ -83,7 +84,9 @@ digraph G {
         <table border="0" cellborder="1" cellspacing="0" >
         <tr><td><i>Fiador</i></td></tr>
         <tr><td port="id_fiador" align="left" cellpadding="5">PK id_fiador <font color="grey60">int() NOT NULL</font></td></tr>
-        <tr><td port="id_locacao" align="left" cellpadding="5">FK id_locacao <font color="grey60">int() NOT NULL</font></td></tr>
+        <tr><td port="nome" align="left" cellpadding="5">nome <font color="grey60">varchar(100) NOT NULL</font></td></tr>
+        <tr><td port="numeroTelefone" align="left" cellpadding="5">numeroTelefone <font color="grey60">char(20) NOT NULL</font></td></tr>
+        <tr><td port="email" align="left" cellpadding="5">email <font color="grey60">varchar(50) NOT NULL</font></td></tr>
     </table>>];
     "Inspecao" [ label=<
         <table border="0" cellborder="1" cellspacing="0" >

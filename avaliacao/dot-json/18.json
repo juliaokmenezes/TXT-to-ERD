@@ -24,8 +24,7 @@
             "endereco": "varchar(200) NOT NULL",
             "valorAluguel": "decimal(10,2) NOT NULL",
             "+id_proprietario": "int() NOT NULL",
-            "+id_corretorImoveis": "int() NOT NULL",
-            "disponivelParaAluguel": "boolean() NOT NULL"
+            "+id_corretorImoveis": "int() NOT NULL"
         },
         "Locacoes": {
             "*id_locacao": "int() NOT NULL",

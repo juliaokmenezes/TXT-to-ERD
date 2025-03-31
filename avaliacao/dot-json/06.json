@@ -31,7 +31,8 @@
             "+id_inquilino": "int() NOT NULL",
             "dataInicioLocacao": "date() NOT NULL",
             "dataFimLocacao": "date()",
-            "valorDeposito": "decimal(10,2) NOT NULL"
+            "valorDeposito": "decimal(10,2) NOT NULL",
+            "utensilhos": "text()"
         },
         "Pagamentos": {
             "*id_pagamento": "int() NOT NULL",
@@ -39,8 +40,7 @@
             "valorAluguel": "decimal(10,2) NOT NULL",
             "contaPagamento": "varchar(50) NOT NULL",
             "contaRecebimento": "varchar(50) NOT NULL",
-            "dataPagamento": "date() NOT NULL",
-            "utensilhos": "text()"
+            "dataPagamento": "date() NOT NULL"
         }
     },
 
